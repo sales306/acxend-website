@@ -65,18 +65,15 @@ html:not(.cursor-ready) .cursor-ring { opacity: 0; }
 }
 
 
-/* ---------- Textured section ----------
-   A static background treatment (no JS, no scroll pinning) for the first
-   content section after the hero on every page — the light brand texture
-   that used to be tied to the reverse curtain-reveal effect. That effect
-   relied on GSAP ScrollTrigger pinning layered on top of this site's own
-   custom inertia-scroll engine, and the two could drift out of sync (the
-   pin's transform occasionally got stuck mid-animation after a
-   scroll-down-then-back-to-top, leaving the hero rendered off-screen).
-   Removed the pin/reveal system entirely rather than patch around it —
-   this class keeps the visual (the texture) without any of the fragility. */
+/* ---------- Textured section (now plain) ----------
+   The first content section after the hero on every page. Previously
+   carried a light brand texture background (tied to the removed
+   curtain-reveal effect — see main.js history); now a plain white
+   background per request. Class name kept as-is since it's still applied
+   sitewide and removing it would mean touching all 9 pages' markup for
+   zero visual benefit — it simply does less now. */
 .section--textured {
-  background: url("../images/section-texture-light.webp") center / cover no-repeat, var(--white);
+  background: var(--white);
 }
 
 
