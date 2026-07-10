@@ -1,0 +1,95 @@
+/* ==========================================================================
+   aCXend — Site-wide interaction effects
+   Styling hooks for the JS-driven engines in js/main.js: the inertia
+   smooth-scroll container, the footer curtain reveal, the custom cursor,
+   and magnetic buttons — plus the static .section--textured background
+   used on the first content section after the hero on every page.
+   Depends on tokens.css. Load on every page — these engines run globally
+   regardless of page content.
+   ========================================================================== */
+
+/* ---------- Smooth-scroll container ---------- */
+html.has-smooth-scroll body { overflow-x: clip; }
+#smooth-content {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  will-change: transform;
+  padding-top: var(--nav-h, 78px);
+  background: var(--white);
+  z-index: 2;
+}
+#smooth-spacer { width: 100%; pointer-events: none; }
+html.no-smooth-scroll #smooth-content { position: static; padding-top: 0; background: none; z-index: auto; }
+html.no-smooth-scroll #smooth-spacer { display: none; }
+
+/* ---------- Footer curtain reveal ----------
+   The footer sits pinned to the bottom of the viewport, behind the opaque
+   scrolling content. It stays hidden until the user scrolls past the end
+   of the page content, at which point the content (the "curtain") has
+   nowhere left to cover it, so the footer appears to rise into view. */
+html.has-smooth-scroll .footer-curtain {
+  position: fixed;
+  left: 0; bottom: 0; width: 100%;
+  z-index: 1;
+}
+html.no-smooth-scroll .footer-curtain { position: static; }
+
+/* Elements that shift on scroll progress (read by JS) */
+[data-parallax] { will-change: transform; }
+
+/* ---------- Custom reactive cursor ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html.has-smooth-scroll, html.has-smooth-scroll * { cursor: none; }
+}
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  pointer-events: none; border-radius: 50%;
+  transform: translate3d(-50%,-50%,0);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 7px; height: 7px; background: var(--royal);
+  transition: opacity .2s var(--ease), width .25s var(--ease), height .25s var(--ease);
+}
+.cursor-ring {
+  width: 36px; height: 36px; border: 1.5px solid rgba(14,79,196,.45);
+  transition: opacity .2s var(--ease), width .3s var(--ease-lux), height .3s var(--ease-lux), border-color .3s var(--ease);
+}
+html:not(.cursor-ready) .cursor-dot,
+html:not(.cursor-ready) .cursor-ring { opacity: 0; }
+.cursor-dot.is-hover { width: 10px; height: 10px; }
+.cursor-ring.is-hover { width: 64px; height: 64px; border-color: rgba(14,79,196,.7); background: rgba(14,79,196,.06); }
+.cursor-ring.is-down { width: 30px; height: 30px; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+
+/* ---------- Textured section ----------
+   A static background treatment (no JS, no scroll pinning) for the first
+   content section after the hero on every page — the light brand texture
+   that used to be tied to the reverse curtain-reveal effect. That effect
+   relied on GSAP ScrollTrigger pinning layered on top of this site's own
+   custom inertia-scroll engine, and the two could drift out of sync (the
+   pin's transform occasionally got stuck mid-animation after a
+   scroll-down-then-back-to-top, leaving the hero rendered off-screen).
+   Removed the pin/reveal system entirely rather than patch around it —
+   this class keeps the visual (the texture) without any of the fragility. */
+.section--textured {
+  background: url("../images/section-texture-light.webp") center / cover no-repeat, var(--white);
+}
+
+
+/* ---------- Magnetic buttons ---------- */
+.btn[data-magnetic] { will-change: transform; }
+.btn[data-magnetic] .btn-label,
+.btn[data-magnetic] .arrow { will-change: transform; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #smooth-content { position: static !important; padding-top: 0 !important; background: none !important; z-index: auto !important; }
+  #smooth-spacer { display: none !important; }
+  .footer-curtain { position: static !important; }
+  html.has-smooth-scroll, html.has-smooth-scroll * { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}

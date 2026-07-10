@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What We Support — aCXend Services</title>
+<meta name="description" content="Customer Support, Content Moderation, Website Development, and Project Management — aCXend builds structure around the work that matters, adapted to your workflows, tools, and goals." />
+<meta property="og:title" content="What We Support — aCXend Services" />
+<meta property="og:description" content="Customer Support, Content Moderation, Website Development, and Project Management — built around the work that matters." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="services.html" />
+<link rel="icon" type="image/webp" href="images/favicon.webp" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- ==========================================================================
+     Stylesheet load order: tokens → base → components → animations → effects
+     are shared across every page. This page needs no page-specific stylesheet
+     — the video page-hero, split sections, and CTA banner are all already
+     defined in components.css for reuse.
+     ========================================================================== -->
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/effects.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============== NAVIGATION ============== -->
+<header class="nav-wrap" data-nav>
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="aCXend — Home">
+      <img src="images/NAVZZ.png" alt="aCXend" class="brand-logo" width="76" height="52"
+           onerror="this.outerHTML='&lt;span class=&quot;brand-word&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
+    </a>
+
+    <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+      <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+      <div class="nav-item"><a class="nav-link" href="about.html">About Us</a></div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link active" aria-current="page" href="services.html">Services
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Services submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="customer-support.html">Customer Support</a>
+          <a role="menuitem" href="content-moderation.html">Content Moderation</a>
+          <a role="menuitem" href="website-operations.html">Website Operations</a>
+          <a role="menuitem" href="project-management.html">Project Management</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="engagement-models.html">Engagement Models
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Engagement Models submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="engagement-models.html#staff-augmentation">Staff Augmentation</a>
+          <a role="menuitem" href="engagement-models.html#managed-services">Managed Services</a>
+          <a role="menuitem" href="engagement-models.html#hybrid-model">Hybrid Teams</a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-nav">Start a Conversation</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<div id="smooth-content">
+<main id="main">
+
+<!-- ============== PAGE HERO ============== -->
+<header class="page-hero" aria-label="aCXend services introduction">
+  <!-- Cinematic background video: autoplay, muted, loop, playsinline.
+       TODO: replace with real footage for this page — customer support,
+       technology, business operations, or digital workflows, per the
+       Services brief. Export as both webm (VP9) and mp4 (H.264), ideally
+       under ~6MB and 1920×1080, for smooth loading on all devices. -->
+  <div class="page-hero-media" aria-hidden="true">
+    <video
+      class="page-hero-video"
+      autoplay muted loop playsinline
+      preload="auto"
+      poster="images/services-hero-poster.jpg">
+      <source src="videos/bg3.mp4" type="video/webm" />
+      <source src="videos/bg3.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero-inner">
+    <div class="page-hero-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span aria-current="page">Services</span>
+      </nav>
+      <span class="eyebrow eyebrow--light reveal split-text">Services</span>
+      <h1 class="reveal split-text">What We Support</h1>
+      <p class="page-hero-desc reveal split-text">We work across the operational areas that keep your business running — support, moderation, web, and project delivery — adapted to your workflows, tools, and goals.</p>
+      <div class="page-hero-cta reveal">
+        <a href="tel:+18005550199" class="btn btn-ghost btn-lg">
+          <svg class="btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 2h2.2l1 3-1.6 1.2a8.5 8.5 0 0 0 4.7 4.7l1.2-1.6 3 1v2.2c0 .8-.7 1.4-1.5 1.3C7.6 13.2 2.8 8.4 2.2 3.5 2.1 2.7 2.7 2 3.5 2Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Call Us
+        </a>
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <figure class="page-hero-visual reveal" aria-hidden="true">
+      <div class="page-hero-photo">
+        <img
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80"
+          srcset="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80 700w,
+                  https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80 900w,
+                  https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1300&q=80 1300w"
+          sizes="(max-width: 768px) 90vw, 44vw"
+          width="900" height="740"
+          alt=""
+          loading="eager"
+          decoding="async" />
+      </div>
+    </figure>
+  </div>
+</header>
+
+<!-- ============== 1 · WHAT WE SUPPORT (overview) ============== -->
+<section class="section section--textured">
+  <div class="container narrow">
+    <div class="section-head section-head--center reveal" data-stagger>
+      <div>
+        <span class="eyebrow reveal split-text">What we support</span>
+        <h2 class="reveal split-text">Support built around the work that <span class="accent">matters.</span></h2>
+      </div>
+      <p>Our support is shaped by what our partners actually need to run and grow their operations. We focus on building structure around the work—so it stays consistent, scalable, and well-managed as you grow.</p>
+      <p>Rather than offering fixed packages, we work across key operational areas and adapt our support based on your workflows, tools, and goals. Each function is approached with the same level of ownership, attention to detail, and accountability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 2 · CUSTOMER SUPPORT ============== -->
+<section class="section section--cloud">
+  <div class="container split">
+    <div class="split-body reveal" data-stagger>
+      <span class="eyebrow reveal split-text">Customer Support</span>
+      <h2 class="reveal split-text">Customer service, handled with care and <span class="accent">structure.</span></h2>
+      <p>We support customer experience across voice, chat, and email—handling everything from basic inquiries to more complex cases such as disputes, escalations, refunds, and verification processes.</p>
+      <p>Our teams are trained around your workflows and tools, with clear processes for ticket handling, escalation management, and quality assurance. Whether supporting traditional industries or more complex environments like fintech and web3, we focus on delivering consistent, reliable support that reflects your standards.</p>
+      <a href="customer-support.html" class="btn btn-primary">Explore Customer Support
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <figure class="split-visual reveal" aria-hidden="true">
+      <div class="split-photo">
+        <img
+          src="https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=800&q=80"
+          srcset="https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=800&q=80 800w,
+                  https://images.unsplash.com/photo-1553775282-20af80779df7?auto=format&fit=crop&w=1100&q=80 1100w"
+          sizes="(max-width: 991px) 90vw, 560px"
+          width="800" height="1000"
+          alt=""
+          loading="lazy"
+          decoding="async" />
+      </div>
+      <figcaption class="panel-tag">Voice, chat & email, one standard</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============== 3 · CONTENT MODERATION ============== -->
+<section class="section section--dark">
+  <div class="section-grid-bg" aria-hidden="true"></div>
+  <span class="section-node" aria-hidden="true"><span class="node-ring"></span><span class="node-dot"></span></span>
+  <div class="container split split--reverse">
+    <figure class="split-visual reveal" aria-hidden="true">
+      <div class="split-photo">
+        <img
+          src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80"
+          srcset="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80 800w,
+                  https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1100&q=80 1100w"
+          sizes="(max-width: 991px) 90vw, 560px"
+          width="800" height="1000"
+          alt=""
+          loading="lazy"
+          decoding="async" />
+      </div>
+      <figcaption class="panel-tag">Accurate, repeatable decisions</figcaption>
+    </figure>
+
+    <div class="split-body reveal" data-stagger>
+      <span class="eyebrow reveal split-text">Content Moderation</span>
+      <h2 class="reveal split-text">Structured moderation at <span class="accent">scale.</span></h2>
+      <p>We help teams manage large volumes of content while maintaining quality, consistency, and compliance with platform standards.</p>
+      <p>From image, video and text moderation to policy enforcement and escalation handling, we build workflows that ensure decisions are accurate and repeatable. Our approach includes clear guidelines, QA layers, and continuous feedback loops to improve performance over time.</p>
+      <a href="content-moderation.html" class="btn btn-primary">Explore Content Moderation
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 4 · WEBSITE DEVELOPMENT ============== -->
+<section class="section section--cloud">
+  <div class="container split">
+    <div class="split-body reveal" data-stagger>
+      <span class="eyebrow reveal split-text">Website Development</span>
+      <h2 class="reveal split-text">Website development and ongoing <span class="accent">support.</span></h2>
+      <p>We support website development and management across platforms; Duda, Lovable, and WordPress—handling both build and ongoing updates.</p>
+      <p>Whether working on individual projects or managing multiple sites at scale, we bring structure to how work is delivered, tracked, and maintained. This includes content updates, QA checks, and coordination across teams to ensure consistency and quality.</p>
+      <a href="website-operations.html" class="btn btn-primary">Explore Website Development
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <figure class="split-visual reveal" aria-hidden="true">
+      <div class="split-photo">
+        <img
+          src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80"
+          srcset="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80 800w,
+                  https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1100&q=80 1100w"
+          sizes="(max-width: 991px) 90vw, 560px"
+          width="800" height="1000"
+          alt=""
+          loading="lazy"
+          decoding="async" />
+      </div>
+      <figcaption class="panel-tag">Duda, Lovable & WordPress</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============== 5 · PROJECT MANAGEMENT ============== -->
+<section class="section">
+  <div class="container split split--reverse">
+    <figure class="split-visual reveal" aria-hidden="true">
+      <div class="split-photo">
+        <img
+          src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+          srcset="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80 800w,
+                  https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1100&q=80 1100w"
+          sizes="(max-width: 991px) 90vw, 560px"
+          width="800" height="1000"
+          alt=""
+          loading="lazy"
+          decoding="async" />
+      </div>
+      <figcaption class="panel-tag">Aligned, accountable, on track</figcaption>
+    </figure>
+
+    <div class="split-body reveal" data-stagger>
+      <span class="eyebrow reveal split-text">Project Management</span>
+      <h2 class="reveal split-text">Project and workflow <span class="accent">management.</span></h2>
+      <p>We provide operational support to help teams stay organized, aligned, and accountable. From managing workflows and timelines to coordinating across teams, we ensure that work moves forward without unnecessary friction.</p>
+      <p>Our role can range from structured project management to ongoing operational oversight—depending on what your team needs to stay efficient and focused.</p>
+      <a href="project-management.html" class="btn btn-primary">Explore Project Management
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 6 · CTA ============== -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal" data-stagger>
+
+      <!-- Cinematic background video: autoplay, muted, loop, playsinline.
+           Same reusable CTA component as Home and About. -->
+      <div class="cta-video-wrap" aria-hidden="true">
+        <video
+          class="cta-video"
+          autoplay muted loop playsinline
+          preload="auto"
+          poster="images/cta-poster.jpg">
+          <source src="videos/cta-background.webm" type="video/webm" />
+          <source src="videos/cta-background.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="cta-video-overlay" aria-hidden="true"></div>
+      <div class="cta-glow" aria-hidden="true"></div>
+
+      <div class="cta-content">
+        <span class="eyebrow eyebrow--sky reveal split-text">Partner with us</span>
+        <h2 class="reveal split-text">Tell us what you're building.</h2>
+        <p>Whether you're exploring options or already know what you need, we're here to understand your goals and see how we can support you. No pressure—just a conversation to see if there's a good fit.</p>
+        <p>Share a bit about your team, your challenges, or the work you're looking to support, and we'll take it from there.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-light btn-lg">Start a Conversation
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- /#smooth-content -->
+
+<!-- ============== FOOTER (curtain reveal) ============== -->
+<footer class="footer footer-curtain" id="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html" aria-label="aCXend — Home">
+          <img src="images/logo-whte2.png" alt="aCXend" width="79" height="54"
+               onerror="this.outerHTML='&lt;span class=&quot;brand-word brand-word--light&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
+        </a>
+        <address class="footer-address">
+          <a href="https://maps.app.goo.gl/VBjbcP57tKT8KL2XA" target="_blank" rel="noopener noreferrer">Marigold Street, Cagayan de Oro City, Philippines</a>
+          <a href="mailto:sales@acxend.com">sales@acxend.com</a>
+        </address>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <ul class="footer-primary">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="engagement-models.html">Engagement Models</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <div class="footer-cols">
+          <ul>
+            <li><h4>Services</h4></li>
+            <li><a href="customer-support.html">Customer Support</a></li>
+            <li><a href="content-moderation.html">Content Moderation</a></li>
+            <li><a href="website-operations.html">Website Operations</a></li>
+            <li><a href="project-management.html">Project Management</a></li>
+          </ul>
+          <ul>
+            <li><h4>Engagement Models</h4></li>
+            <li><a href="engagement-models.html#staff-augmentation">Staff Augmentation</a></li>
+            <li><a href="engagement-models.html#managed-services">Managed Services</a></li>
+            <li><a href="engagement-models.html#hybrid-model">Hybrid Teams</a></li>
+          </ul>
+          <ul>
+            <li><h4>Business Hours</h4></li>
+            <li><span>24/7 Operations</span></li>
+            <li><span>365 Days a Year</span></li>
+            <li><span>Always Ready to Assist</span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-follow-label">Follow Us</span>
+      <ul class="footer-social" aria-label="Social media">
+        <li><a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.2L5.6 21h-3l7.1-8.1L2.3 3h6.3l4.3 5.7L17.8 3zm-1.1 16.2h1.7L7.7 4.7H5.9l10.8 14.5z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8zm0-1.8a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.2a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 4.7c-2.4 0-2.7 0-3.6.1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3.9.1 1.2.1 3.6.1s2.7 0 3.6-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-.9-.1-1.2-.1-3.6-.1zM12 3c2.4 0 2.7 0 3.7.1 1 0 1.6.2 2.2.4.6.2 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.2.4 2.2.1 1 .1 1.3.1 3.6s0 2.6-.1 3.6c0 1-.2 1.6-.4 2.2-.2.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.2-1.2.4-2.2.4-1 .1-1.3.1-3.7.1s-2.7 0-3.7-.1c-1 0-1.6-.2-2.2-.4-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.2-.6-.4-1.2-.4-2.2C3 14.6 3 14.3 3 12s0-2.6.1-3.6c0-1 .2-1.6.4-2.2.2-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.2 1.2-.4 2.2-.4C9.3 3 9.6 3 12 3z"/></svg>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 aCXend. All rights reserved.</span>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">End-User License Agreement</a></li>
+        <li><a href="#">Copyrights</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<div id="smooth-spacer"></div>
+
+<!-- js/main.js — site-wide behavior. No third-party libraries required. -->
+<script src="js/main.js"></script>
+</body>
+</html>

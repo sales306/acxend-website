@@ -1,0 +1,37 @@
+/* ==========================================================================
+   aCXend — Animations
+   Generic, reusable motion utilities: scroll-reveal, word-by-word text
+   reveal, and the base reduced-motion contract. Depends on tokens.css.
+   Load on every page — these classes (.reveal, .split-text) are meant to
+   be reused on any future page's headings/content.
+   ========================================================================== */
+
+/* ---------- Reveal animations ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease-lux), transform .7s var(--ease-lux); transition-delay: var(--d, 0s); }
+.reveal.in { opacity: 1; transform: none; }
+
+
+/* ---------- Word-by-word text reveal (headings + lead copy) ---------- */
+.split-text.reveal { opacity: 1; transform: none; }
+.split-text .sp-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.split-text .sp-word-i {
+  display: inline-block;
+  transform: translateY(108%);
+  opacity: 0;
+  transition: transform .8s var(--ease-lux), opacity .5s var(--ease-lux);
+  transition-delay: var(--wd, 0s);
+}
+.split-text.in .sp-word-i { transform: translateY(0); opacity: 1; }
+
+
+/* ---------- Base reduced-motion contract ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
+  .split-text .sp-word-i { transform: none !important; opacity: 1 !important; transition: none !important; }
+}

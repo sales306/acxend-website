@@ -1,0 +1,863 @@
+/* ==========================================================================
+   aCXend — Components
+   Reusable, page-agnostic UI blocks: navigation, footer, marquee, split
+   sections, capability/value/model cards, CTA banner, page-hero, services,
+   contact form, and FAQ accordion. Depends on tokens.css + base.css.
+   Load on every page that uses these blocks.
+   ========================================================================== */
+
+/* ---------- 5. Navigation ---------- */
+.nav-wrap {
+  position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav);
+  padding-block: 14px;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.nav-wrap.scrolled { border-color: var(--line); box-shadow: 0 8px 24px -18px rgba(10,31,76,.35); background: rgba(255,255,255,.92); }
+
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { height: 52px; width: auto; }
+.brand-word { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--navy); letter-spacing: -.02em; }
+.brand-word b { color: var(--royal); }
+.brand-word--light { color: var(--white); }
+
+.nav-menu { display: flex; align-items: center; gap: 6px; }
+.nav-item { position: relative; }
+.nav-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  font-family: 'Manrope', sans-serif; font-weight: 600; font-size: .92rem;
+  color: var(--ink);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.nav-link:hover { color: var(--royal); background: var(--cloud); }
+.nav-link.active { color: var(--royal); }
+.nav-link.active::after {
+  content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px;
+  height: 2px; border-radius: 2px; background: var(--royal);
+}
+
+.caret { display: inline-flex; padding: 4px; border-radius: 6px; color: currentColor; }
+.caret svg { width: 14px; height: 14px; transition: transform var(--dur) var(--ease); }
+
+/* Dropdown — desktop hover + keyboard focus-within */
+.dropdown {
+  position: absolute; top: calc(100% + 10px); left: 0;
+  min-width: 230px; padding: 8px;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease), visibility .22s;
+}
+.dropdown a {
+  display: block; padding: 10px 14px; border-radius: 8px;
+  font-size: .9rem; font-weight: 500; color: var(--ink);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.dropdown a:hover { background: var(--cloud); color: var(--royal); }
+
+@media (min-width: 992px) {
+  .nav-item:hover > .dropdown,
+  .nav-item:focus-within > .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-item:hover .caret svg,
+  .nav-item:focus-within .caret svg { transform: rotate(180deg); }
+}
+
+.nav-cta { display: flex; align-items: center; gap: 14px; }
+.menu-toggle {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 44px; height: 44px; padding: 10px; border-radius: var(--radius-sm);
+}
+.menu-toggle span { display: block; height: 2px; border-radius: 2px; background: var(--navy); transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease); }
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* ---------- 7. Marquee — capability strip ---------- */
+.marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--white); }
+.marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee-track.js-marquee { animation: none; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; align-items: stretch; }
+
+/* Each capability is a fixed-width cell — icon badge, bold label, short
+   supporting line — separated by hairline dividers so the strip reads as
+   one continuous premium ribbon rather than a row of floating cards. */
+.mq-item {
+  flex: none; width: 252px;
+  display: flex; flex-direction: column; justify-content: center; gap: 10px;
+  padding: 28px 30px;
+  border-right: 1px solid var(--line);
+}
+.mq-icon {
+  width: 40px; height: 40px; border-radius: 11px;
+  display: grid; place-items: center;
+  font-size: 1.05rem; line-height: 1;
+  background: linear-gradient(135deg, var(--cta-1), var(--cta-2));
+  box-shadow: 0 8px 16px -8px rgba(10,91,255,.45);
+}
+.mq-icon--dark {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+  box-shadow: 0 8px 16px -8px rgba(6,20,52,.5);
+}
+.mq-title { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .95rem; color: var(--navy); }
+.mq-desc { font-size: .82rem; color: var(--slate); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+
+/* ---------- 8. Split sections ---------- */
+.split {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center; gap: clamp(40px, 6vw, 90px);
+}
+.split--reverse .split-body { order: 2; }
+.split--reverse .split-visual { order: 1; }
+
+/* Visual panels — professional imagery, replacing the earlier SVG/board/
+   meter panels so the "How we work", "Where we add value", and "Flexible
+   by design" sections lean on real photography instead of illustrated
+   data that a new company doesn't yet have. */
+.split-visual { margin: 0; }
+.split-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: clip;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  background: var(--cloud); /* shows while the image decodes */
+}
+.split-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.panel-tag {
+  margin-top: 22px; font-family: 'Manrope', sans-serif;
+  font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+  color: var(--slate); text-transform: uppercase;
+}
+
+
+/* ---------- 9. Capabilities ---------- */
+.section-head {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  align-items: end; gap: 32px; margin-bottom: clamp(44px, 5vw, 64px);
+}
+.section-head h2 { margin-bottom: 0; }
+.section-head p { justify-self: end; align-self: end; }
+
+/* Centered variant — heading and supporting text stack in a single
+   column instead of sitting side by side in the default two-column grid. */
+.section-head--center {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.section-head--center .eyebrow { justify-content: center; }
+.section-head--center p { justify-self: center; align-self: auto; max-width: 640px; margin-inline: auto; }
+
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.cap-card {
+  position: relative; display: flex; flex-direction: column; gap: 14px;
+  padding: 30px 26px 26px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform var(--dur) var(--ease-lux), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  overflow: clip;
+}
+.cap-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: linear-gradient(90deg, var(--cta-1), var(--cta-2));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s var(--ease-lux);
+}
+.cap-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(47,123,224,.4); }
+.cap-card:hover::before { transform: scaleX(1); }
+
+.cap-num {
+  position: absolute; top: 20px; right: 22px;
+  font-family: 'Manrope', sans-serif; font-weight: 800; font-size: .82rem;
+  color: var(--line); letter-spacing: .08em;
+  transition: color var(--dur) var(--ease);
+}
+.cap-card:hover .cap-num { color: var(--sky); }
+.cap-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(10,91,255,.08), rgba(77,163,255,.14));
+  color: var(--royal);
+  transition: transform var(--dur) var(--ease-lux), background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.cap-icon svg { width: 26px; height: 26px; }
+.cap-card:hover .cap-icon { transform: scale(1.06) rotate(-3deg); background: linear-gradient(135deg, var(--cta-1), var(--cta-2)); color: var(--white); }
+.cap-card p { font-size: .92rem; flex: 1; }
+.cap-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .86rem; color: var(--royal);
+}
+.cap-link .arrow { width: 14px; height: 14px; transition: transform var(--dur) var(--ease); }
+.cap-card:hover .cap-link .arrow { transform: translateX(4px); }
+
+
+/* ---------- 10. CTA banner ---------- */
+.cta-banner {
+  position: relative; overflow: clip;
+  padding: clamp(48px, 7vw, 88px) clamp(28px, 6vw, 88px);
+  border-radius: calc(var(--radius) + 8px);
+  background: linear-gradient(140deg, var(--navy-deep), var(--navy) 55%, #10306E);
+  box-shadow: var(--shadow-lg);
+}
+.cta-banner h2 { color: var(--white); }
+.cta-banner p { color: rgba(226,236,252,.78); }
+
+/* Background video (layer 0) — muted/looped ambient footage, subtle rather
+   than distracting; sits on top of the gradient fallback above. */
+.cta-video-wrap { position: absolute; inset: 0; z-index: 0; }
+.cta-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-lux);
+}
+.cta-video.is-ready { opacity: .5; }
+
+/* Dark readability scrim (layer 1) — echoes the brand gradient so the video
+   feels integrated rather than pasted on top. */
+.cta-video-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(140deg, rgba(6,20,52,.90), rgba(10,31,76,.82) 55%, rgba(16,48,110,.80));
+}
+
+/* Ambient glow (layer 2) + content (layer 3) sit above the video/overlay */
+.cta-glow {
+  position: absolute; z-index: 2; width: 500px; height: 500px; top: -220px; right: -140px;
+  border-radius: 50%; filter: blur(90px);
+  background: radial-gradient(circle, rgba(77,163,255,.4), transparent 65%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Centered content column */
+.cta-content {
+  position: relative; z-index: 3;
+  max-width: 640px; margin-inline: auto;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.cta-content .eyebrow { justify-content: center; }
+.cta-content p { margin-inline: auto; }
+.cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 32px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-video-wrap, .cta-video { display: none !important; }
+}
+
+
+/* ---------- 11. Footer ---------- */
+.footer { background: var(--navy-deep); color: rgba(226,236,252,.75); padding-block: clamp(56px, 7vw, 88px) 28px; }
+.footer a { transition: color var(--dur) var(--ease); }
+.footer a:hover { color: var(--white); }
+
+.footer-top { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: clamp(36px, 5vw, 72px); }
+.footer-logo img { height: 54px; width: auto; }
+.footer-address { font-style: normal; margin-top: 20px; display: grid; gap: 10px; font-size: .92rem; }
+
+.footer-primary { display: grid; gap: 8px; margin-bottom: 34px; }
+.footer-primary a { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: clamp(18px, 1.2vw, 18px); color: var(--white); }
+.footer-primary a:hover { color: var(--sky); }
+
+.footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.footer-cols h4 { color: var(--sky); font-size: .74rem; margin-bottom: 6px; }
+.footer-cols ul { display: grid; gap: 9px; align-content: start; font-size: .9rem; }
+
+.footer-giant {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-block: clamp(40px, 6vw, 72px) 30px;
+  font-family: 'Manrope', sans-serif; font-weight: 800;
+  font-size: clamp(4rem, 14vw, 12.5rem); line-height: .95; letter-spacing: -.04em;
+  color: rgba(255,255,255,.08);
+  user-select: none;
+  transition: color .6s var(--ease);
+}
+.footer-giant:hover { color: rgba(111,168,242,.16); }
+.footer-giant svg { width: .5em; height: .5em; stroke-width: 2; }
+
+.footer-bar {
+  display: flex; align-items: center; gap: 18px;
+  padding-block: 22px; border-top: 1px solid rgba(255,255,255,.1);
+}
+.footer-follow-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }
+.footer-social { display: flex; gap: 8px; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.16);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.footer-social a:hover { background: rgba(255,255,255,.08); border-color: var(--sky); transform: translateY(-3px); }
+.footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+
+.footer-legal {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+  padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1);
+  font-size: .82rem; color: rgba(226,236,252,.5);
+}
+.footer-legal ul { display: flex; flex-wrap: wrap; gap: 20px; }
+
+
+/* ---------- Page hero ----------
+   Premium cinematic video hero for every inner page (About, Services,
+   Contact, individual service pages, etc). Full-width autoplay/muted/
+   loop/playsinline background video + a subtle dark overlay (20–35%,
+   per spec) for text legibility, spanning the entire hero behind BOTH
+   columns below.
+
+   Two-column composition, mirroring the Home hero's own two-column
+   layout so inner pages read as an extension of it: left column is
+   left-aligned content (eyebrow, H1, paragraph, CTAs), right column is
+   a large rounded photo. Stacks to one column (content, then image) on
+   mobile. The Home page hero itself is a separate, unique component
+   (see home.css) — this is not it. */
+.page-hero {
+  position: relative;
+  min-height: clamp(560px, 86vh, 900px);
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  overflow: clip;
+  /* Fallback fill — visible only if no video is supplied, or while it loads */
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+.page-hero-media { position: absolute; inset: 0; z-index: 0; }
+.page-hero-video {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  opacity: 0;
+  transition: opacity 1s var(--ease-lux);
+}
+.page-hero-video.is-ready { opacity: 1; }
+.page-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  /* 20–35% dark overlay per spec — spans the full hero behind both columns */
+  background: rgba(6, 20, 52, .3);
+}
+
+/* Two-column grid: left content, right image. Same technique as the Home
+   hero's .hero-inner, so the two heroes feel like the same family. */
+.page-hero-inner {
+  position: relative; z-index: 3; width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  padding-block: clamp(64px, 8vw, 110px);
+}
+.page-hero-content { text-align: left; }
+.page-hero-content .crumbs,
+.page-hero-content .eyebrow { justify-content: flex-start; }
+.page-hero h1 { color: var(--white); margin-bottom: 18px; font-size: clamp(2.5rem, 4.6vw, 4rem); }
+.page-hero-desc { color: rgba(226,236,252,.88); font-size: clamp(1rem, 1.25vw, 1.15rem); max-width: 50ch; }
+.page-hero-cta { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; margin-top: 32px; }
+
+/* Right column — premium image, same rounded/bordered/shadow treatment as
+   the Home hero's .hero-photo and the split sections' .split-photo, plus
+   a slow continuous float so it feels alive without needing hover. */
+.page-hero-visual { position: relative; }
+.page-hero-photo {
+  position: relative;
+  aspect-ratio: 4 / 3.3;
+  border-radius: calc(var(--radius) + 4px);
+  overflow: clip;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 30px 70px -25px rgba(0,0,0,.55);
+  animation: focus-card-float 6.5s ease-in-out infinite;
+}
+.page-hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+  transition: transform 1.4s var(--ease-lux);
+}
+.page-hero-photo:hover img { transform: scale(1.045); }
+@keyframes focus-card-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+
+.crumbs {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 26px;
+  font-family: 'Manrope', sans-serif; font-size: .8rem; font-weight: 600;
+  color: rgba(226,236,252,.55);
+}
+.crumbs a { color: rgba(226,236,252,.75); transition: color var(--dur) var(--ease); }
+.crumbs a:hover { color: var(--white); }
+.crumbs svg { width: 12px; height: 12px; opacity: .5; }
+.crumbs [aria-current] { color: var(--sky); }
+
+.page-hero-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.page-hero-jump a {
+  padding: 9px 18px; min-height: 40px; display: inline-flex; align-items: center;
+  border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius-pill);
+  font-family: 'Manrope', sans-serif; font-size: .84rem; font-weight: 600;
+  color: rgba(226,236,252,.85);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.page-hero-jump a:hover { background: rgba(255,255,255,.08); border-color: var(--sky); color: var(--white); transform: translateY(-2px); }
+
+@media (max-width: 1600px) and (min-width: 992px) {
+  /* Laptop range: same reasoning as the Home hero — give a little more
+     vertical breathing room on shorter laptop viewports (1366×768,
+     1440×900) before the tablet breakpoint's own adjustment kicks in. */
+  .page-hero-photo { aspect-ratio: 4 / 3.6; }
+}
+@media (max-width: 991px) {
+  /* Tablet: keep two columns, just tighten spacing and the photo's aspect
+     ratio so it doesn't dominate a narrower viewport. */
+  .page-hero-inner { gap: clamp(24px, 4vw, 40px); }
+  .page-hero-photo { aspect-ratio: 4 / 3.6; }
+}
+@media (max-width: 768px) {
+  /* Mobile: stack — content first, then image (source order already
+     matches, so no reordering needed). */
+  .page-hero-inner { grid-template-columns: 1fr; }
+  .page-hero-photo { aspect-ratio: 16 / 12; animation: none; }
+}
+@media (max-width: 640px) {
+  .page-hero { min-height: clamp(480px, 92vh, 760px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* main.js removes the whole .page-hero-media (video) node for reduced
+     motion; this is a defensive fallback in case JS hasn't run yet. */
+  .page-hero-video { display: none; }
+  .page-hero-photo { animation: none; }
+  .page-hero-photo:hover img { transform: none; }
+}
+
+
+/* ---------- Stats band (light pages) ---------- */
+.band-stats { background: var(--navy-deep); padding-block: 8px; }
+.band-stats .stat-num { color: var(--white); }
+.band-stats .stat-lbl { color: rgba(226,236,252,.65); }
+
+
+/* ---------- Services ---------- */
+.svc { scroll-margin-top: 90px; }
+/* Engagement Models nav dropdown links to these as same-page anchors
+   (engagement-models.html#staff-augmentation, etc.) rather than separate
+   pages — this keeps the fixed nav from covering the section on jump,
+   for both same-page clicks and cross-page links that land mid-page. */
+#staff-augmentation, #managed-services, #hybrid-model { scroll-margin-top: 100px; }
+.svc-list { display: grid; gap: 12px; margin-top: 22px; }
+.svc-list li {
+  position: relative; padding-left: 32px;
+  color: var(--ink); font-weight: 500; font-size: .95rem;
+}
+.svc-list li::before {
+  content: ""; position: absolute; left: 0; top: 1px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(10,91,255,.12), rgba(77,163,255,.2));
+}
+.svc-list li::after {
+  content: ""; position: absolute; left: 6px; top: 5px;
+  width: 6px; height: 9px;
+  border: solid var(--royal); border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.svc-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 60px; height: 60px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--cta-1), var(--cta-2));
+  color: var(--white); box-shadow: var(--shadow-cta);
+}
+.svc-badge svg { width: 30px; height: 30px; }
+
+/* Browser mock (website development panel) */
+.browser-mock { border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: clip; }
+.browser-bar { display: flex; gap: 6px; padding: 10px 12px; background: var(--cloud); border-bottom: 1px solid var(--line); }
+.browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.browser-bar span:first-child { background: var(--sky); }
+.browser-body { display: grid; gap: 12px; padding: 20px; }
+.browser-cta { width: 110px; height: 32px; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--cta-1), var(--cta-2)); margin-top: 4px; }
+
+
+/* ---------- Value & model cards ---------- */
+.value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.value-card {
+  display: grid; gap: 12px; align-content: start;
+  padding: 30px 26px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform var(--dur) var(--ease-lux), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(47,123,224,.4); }
+.value-num {
+  font-family: 'Manrope', sans-serif; font-weight: 800; font-size: .8rem;
+  letter-spacing: .1em; color: var(--azure);
+}
+.value-card p { font-size: .92rem; }
+
+.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.model-card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 32px 28px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform var(--dur) var(--ease-lux), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.model-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(47,123,224,.4); }
+.model-card p { font-size: .94rem; flex: 1; }
+
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .9fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+}
+.contact-h { margin-bottom: 12px; }
+.contact-form { display: grid; gap: 22px; margin-top: 30px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.form-field { display: grid; gap: 8px; }
+.form-field label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .86rem; color: var(--navy); }
+.req { color: var(--royal); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font: inherit; color: var(--ink);
+  min-height: 50px; padding: 13px 16px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  width: 100%;
+}
+.form-field textarea { resize: vertical; min-height: 140px; }
+.form-field input::placeholder, .form-field textarea::placeholder { color: #9AA7BE; }
+.form-field input:hover, .form-field select:hover, .form-field textarea:hover { border-color: #C6D2E4; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: none; border-color: var(--azure);
+  box-shadow: 0 0 0 3px rgba(47,123,224,.18);
+}
+.form-help { font-size: .8rem; color: var(--slate); }
+.form-status { display: none; padding: 14px 18px; border-radius: var(--radius-sm); font-weight: 500; font-size: .92rem; }
+.form-status.show { display: block; }
+.form-status.ok { background: #EBF9F0; color: #14683A; border: 1px solid #BFE8CF; }
+.form-status.err { background: #FDF0F0; color: #A02929; border: 1px solid #F2CBCB; }
+
+/* Leading icon inside text/email/textarea fields (not selects — those get
+   a trailing chevron instead, styled below). */
+.input-icon { position: relative; }
+.input-icon svg {
+  position: absolute; left: 16px; top: 24px; transform: translateY(-50%);
+  width: 18px; height: 18px; color: #9AA7BE; pointer-events: none;
+}
+.input-icon input,
+.input-icon textarea { padding-left: 46px; }
+.input-icon--top svg { top: 30px; }
+
+/* Custom trailing chevron on <select>, replacing the native arrow —
+   reuses the same chevron path as the nav dropdown caret for consistency. */
+.form-field select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%230A5BFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+.contact-aside { display: grid; gap: 18px; }
+.contact-card {
+  display: grid; gap: 8px; padding: 26px;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform var(--dur) var(--ease-lux), box-shadow var(--dur) var(--ease);
+}
+.contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.contact-card h3 { font-size: 1.02rem; }
+.contact-card a { color: var(--slate); transition: color var(--dur) var(--ease); }
+.contact-card a:hover { color: var(--royal); }
+.contact-card p { font-size: .92rem; }
+.contact-ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 13px; margin-bottom: 4px;
+  background: linear-gradient(135deg, rgba(10,91,255,.08), rgba(77,163,255,.14));
+  color: var(--royal);
+}
+.contact-ic svg { width: 22px; height: 22px; }
+.contact-card--dark {
+  background: linear-gradient(140deg, var(--navy-deep), var(--navy));
+  border-color: transparent; color: var(--white);
+}
+.contact-card--dark h3 { color: var(--white); }
+
+/* ---------- Contact panel — photo + "Get in Touch" info list ----------
+   The right-hand column of the contact form section: one unified card
+   (photo on top, info rows + social links below), rather than several
+   separate floating .contact-card elements. */
+.contact-panel {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: clip; box-shadow: var(--shadow-lg);
+}
+.contact-panel-photo { position: relative; aspect-ratio: 16 / 11; background: var(--cloud); }
+.contact-panel-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.contact-info { padding: clamp(24px, 3vw, 32px); }
+.contact-info h3 { margin-bottom: 8px; }
+.contact-info > p { color: var(--slate); font-size: .92rem; margin-bottom: 8px; }
+
+.contact-info-list { display: grid; margin-top: 18px; }
+.contact-info-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 0; border-top: 1px solid var(--line);
+}
+.contact-info-item:first-child { border-top: 0; padding-top: 0; }
+.contact-info-ic {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(10,91,255,.08), rgba(77,163,255,.14));
+  color: var(--royal);
+  display: grid; place-items: center;
+}
+.contact-info-ic svg { width: 19px; height: 19px; }
+.contact-info-item h4 { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .9rem; color: var(--navy); margin-bottom: 3px; }
+.contact-info-item p, .contact-info-item a { font-size: .87rem; color: var(--slate); line-height: 1.5; }
+.contact-info-item a:hover { color: var(--royal); }
+
+.contact-social { display: flex; gap: 10px; margin-top: 24px; }
+.contact-social a {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--cloud); color: var(--royal);
+  display: grid; place-items: center;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.contact-social a:hover { background: var(--royal); color: var(--white); transform: translateY(-2px); }
+.contact-social svg { width: 16px; height: 16px; }
+
+.next-steps { display: grid; gap: 12px; margin-top: 6px; padding-left: 0; counter-reset: step; list-style: none; }
+.next-steps li {
+  position: relative; padding-left: 40px;
+  color: rgba(226,236,252,.85); font-size: .92rem;
+  counter-increment: step;
+}
+.next-steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: -2px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .76rem; color: var(--sky);
+}
+
+.text-link { color: var(--royal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.text-link:hover { color: var(--royal-hover); }
+
+
+/* ---------- FAQ ---------- */
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  margin-top: clamp(40px, 5vw, 64px);
+}
+.faq-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--radius) + 8px);
+  overflow: clip;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  background: var(--cloud);
+}
+.faq-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+
+.faq-list { display: grid; gap: 14px; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  overflow: clip;
+}
+.faq-item:hover { border-color: rgba(47,123,224,.4); }
+.faq-item[open] { border-color: var(--azure); box-shadow: var(--shadow-md); }
+
+.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 22px 26px; min-height: 48px;
+  font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.02rem; color: var(--navy);
+  cursor: pointer; list-style: none;
+  transition: color var(--dur) var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--royal); }
+
+/* Plus / minus glyph — drawn from two bars rather than a badge, matching
+   a plain, editorial accordion mark rather than a filled icon button. */
+.faq-icon { position: relative; flex: none; width: 18px; height: 18px; }
+.faq-icon::before, .faq-icon::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  background: var(--navy); border-radius: 2px;
+  transition: transform .3s var(--ease-lux), background var(--dur) var(--ease);
+}
+.faq-icon::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 2px; height: 14px; transform: translate(-50%, -50%); }
+.faq-item summary:hover .faq-icon::before,
+.faq-item summary:hover .faq-icon::after { background: var(--royal); }
+.faq-item[open] .faq-icon::before,
+.faq-item[open] .faq-icon::after { background: var(--royal); }
+.faq-item[open] .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+
+.faq-body { padding: 0 26px 24px; }
+.faq-body p { font-size: .95rem; }
+.faq-body strong { color: var(--navy); }
+
+@media (max-width: 900px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-visual { aspect-ratio: 16 / 9; max-width: 480px; margin-inline: auto; }
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 991px) {
+  /* Nav → panel */
+  .menu-toggle { display: flex; }
+  .btn-nav { display: none; }
+  /* Fully opaque instead of the desktop glass effect — backdrop-filter
+     support is inconsistent across mobile browsers (older Android Chrome,
+     Samsung Internet, some Firefox builds), and on devices where it's
+     unsupported the translucent nav lets whatever's behind it (often a
+     dark hero) bleed through unblurred, hurting contrast for the links
+     and the hamburger. A solid background sidesteps that entirely. */
+  .nav-wrap, .nav-wrap.scrolled {
+    background: var(--white);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .menu-toggle span { background: #000; }
+  .nav-menu {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 2px;
+    padding: 14px var(--gutter) 22px;
+    background: var(--white); border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+  }
+  .nav-menu.open { opacity: 1; visibility: visible; transform: none; }
+  .nav-link { width: 100%; justify-content: space-between; padding: 14px 10px; font-size: 1rem; }
+  .nav-link.active::after { display: none; }
+  .caret { width: 44px; height: 44px; justify-content: center; align-items: center; margin: -10px -10px -10px 0; }
+
+  .dropdown {
+    position: static; min-width: 0; padding: 0 0 0 14px;
+    border: 0; box-shadow: none; background: transparent;
+    opacity: 1; visibility: visible; transform: none;
+    display: grid; max-height: 0; overflow: hidden;
+    transition: max-height .35s var(--ease);
+  }
+  .nav-item.open > .dropdown { max-height: 260px; }
+  .nav-item.open .caret svg { transform: rotate(180deg); }
+
+  /* Layout stacks */
+  .split, .split--reverse { grid-template-columns: 1fr; }
+  .split--reverse .split-visual { order: 2; }
+  /* .split-photo becomes full-viewport-width once .split stacks above —
+     its desktop 4:5 portrait ratio would make it excessively tall here,
+     so it's shortened for tablet (and shortened further at mobile below). */
+  .split-photo { aspect-ratio: 4 / 3.4; }
+  .section-head { grid-template-columns: 1fr; align-items: start; gap: 16px; }
+  .section-head p { justify-self: start; }
+  .footer-top { grid-template-columns: 1fr; }
+
+  /* Inner pages */
+  .contact-grid { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: repeat(2, 1fr); }
+  .model-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .split-photo { aspect-ratio: 16 / 11; }
+
+  /* Inner pages */
+  .form-row { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: 1fr; }
+  .page-hero-jump a { flex: 1 1 calc(50% - 5px); justify-content: center; }
+}
+
+/* ---------- Dark section variant ----------
+   Gives an existing content section the same navy/grid/glowing-node visual
+   language as the Home hero — used on ONE content section per inner page
+   (not a separate empty divider) so it does real work as a section while
+   still reading as a recognizable, recurring beat between pages. Reuses
+   the same grid-line technique as the Home hero's background, at lower
+   opacity, so it's related but distinct — a beat, not a repeat. */
+.section--dark {
+  position: relative;
+  overflow: clip;
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+}
+.section--dark > *:not(.section-grid-bg):not(.section-node) { position: relative; z-index: 1; }
+
+.section--dark .eyebrow { color: var(--sky); }
+.section--dark h2, .section--dark h3, .section--dark h4 { color: var(--white); }
+.section--dark p { color: rgba(226,236,252,.78); }
+.section--dark .accent { color: var(--sky); }
+.section--dark .panel-tag { color: rgba(226,236,252,.65); }
+.section--dark .btn-secondary { color: var(--white); border-color: rgba(255,255,255,.25); background: transparent; }
+.section--dark .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
+
+.section-grid-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(111,168,242,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111,168,242,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+.section-node {
+  position: absolute; z-index: 0;
+  top: 64px; left: clamp(20px, 6vw, 80px);
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  pointer-events: none;
+}
+.section-node .node-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 12px 2px rgba(77,163,255,.7);
+  animation: node-drift 6s ease-in-out infinite;
+}
+.section-node .node-ring {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(77,163,255,.5);
+  animation: node-pulse 3.2s ease-in-out infinite;
+}
+@keyframes node-pulse {
+  0%, 100% { transform: scale(.82); opacity: .55; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes node-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2px, -2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-node .node-dot,
+  .section-node .node-ring { animation: none; }
+}
