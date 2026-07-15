@@ -11,8 +11,8 @@
 <meta property="og:image" content="images/hero.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="canonical" href="index.html" />
-<link rel="icon" type="image/png" href="images/favicon-logo.png" />
-<link rel="apple-touch-icon" href="images/favicon-logo.png" />
+<link rel="icon" type="image/png" href="images/favicons.PNG" />
+<link rel="apple-touch-icon" href="images/favicons.PNG" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
 <header class="nav-wrap" data-nav>
   <div class="container nav">
     <a href="index.html" class="brand" aria-label="aCXend — Home">
-      <img src="images/logo-nav.png" alt="aCXend" class="brand-logo" width="76" height="52"
+      <img src="images/logo.png" alt="aCXend" class="brand-logo" width="76" height="52"
            onerror="this.outerHTML='&lt;span class=&quot;brand-word&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
     </a>
 
@@ -90,21 +90,39 @@
 <main id="main">
 
 <!-- ============== HERO ============== -->
+
+
+
+
 <section class="hero" aria-label="aCXend introduction">
+  <!-- Cinematic full-bleed background video: autoplay, muted, loop, playsinline.
+       Reuses .page-hero-media / .page-hero-video so js/main.js fades it in,
+       autoplays it, and removes it under prefers-reduced-motion. The navy
+       gradient on .hero stays as the fallback fill while it loads. -->
+  <div class="page-hero-media hero-media" aria-hidden="true">
+    <video
+      class="page-hero-video"
+      autoplay muted loop playsinline
+      preload="auto">
+      <source src="videos/home-hero.mp4" type="video/mp4" />
+    </video>
+     <div class="page-hero-overlay" aria-hidden="true"></div>
+  </div>
   <div class="hero-bg" aria-hidden="true">
     <div class="hero-grid-lines"></div>
     <div class="hero-glow hero-glow--1"></div>
     <div class="hero-glow hero-glow--2"></div>
-  </div>
+  </div> 
+  
 
   <div class="container hero-inner">
     <div class="hero-copy">
       <p class="eyebrow eyebrow--light reveal split-text">Outsourced operations, done right</p>
       <h1 class="hero-title reveal" data-stagger>
         <span class="line"><span class="line-inner"><em>Elevate Experiences.</em></span></span>
-        <span class="line"><span class="line-inner">Drive <span class="hero-accent">Growth.</span></span></span>
+        <span class="line"><span class="line-inner">Drive Growth.</span></span>
       </h1>
-      <p class="hero-desc reveal split-text">aCXend helps manage and improve customer support, content moderation, and digital operations by building structure behind the scenes.</p>
+      <p class="hero-desc reveal split-text">We manage and improve the support, moderation, and digital operations behind great customer experiences.</p>
       <div class="hero-ctas reveal">
         <a href="contact.html" class="btn btn-primary btn-lg">Start a Conversation
           <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -113,56 +131,27 @@
       </div>
     </div>
 
-    <!-- Signature: professional imagery + service focus card -->
-    <div class="hero-panel reveal" aria-hidden="true">
-      <figure class="hero-photo">
-        <img
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
-          srcset="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80 600w,
-                  https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80 900w,
-                  https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80 1200w"
-          sizes="(max-width: 991px) 90vw, 480px"
-          width="900" height="1125"
-          alt=""
-          loading="lazy"
-          decoding="async" />
-      </figure>
-
-      <div class="hero-focus-card">
-        <span class="hero-focus-head">What we deliver</span>
-        <ul class="focus-list">
-          <li class="focus-item">
-            <span class="focus-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.03 3 3 7.03 3 12v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5v-1a7 7 0 1 1 14 0v1h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-7c0-4.97-4.03-9-9-9Z"/></svg></span>
-            Customer Support
-          </li>
-          <li class="focus-item">
-            <span class="focus-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3Zm0 2.14 6 2.26V11c0 4.44-2.96 8.62-6 9.86-3.04-1.24-6-5.42-6-9.86V6.4l6-2.26ZM11 15l5.5-5.5-1.41-1.41L11 12.17l-2.09-2.09L7.5 11.5 11 15Z"/></svg></span>
-            Content Moderation
-          </li>
-          <li class="focus-item">
-            <span class="focus-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Zm5.2 0 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4Z"/></svg></span>
-            Website Operations
-          </li>
-          <li class="focus-item">
-            <span class="focus-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3Zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.33 0-7 1.17-7 3.5V19h9.5v-2.5c0-1.06.5-1.98 1.29-2.71C10.68 13.36 9.06 13 8 13Zm8 0c-.29 0-.62.02-.97.05.98.86 1.47 1.94 1.47 3.45V19H23v-2.5c0-2.33-4.67-3.5-7-3.5Z"/></svg></span>
-            Dedicated Teams
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   <!-- Proof strip -->
   <div class="hero-stats">
     <div class="container hero-stats-grid">
       <div class="stat reveal"><span class="stat-num" data-count="12" data-suffix="+">0+</span><span class="stat-lbl">Years operating cross-functional teams</span></div>
-      <div class="stat reveal"><span class="stat-num" data-count="98" data-suffix="%">0%</span><span class="stat-lbl">Average client retention</span></div>
+      <div class="stat reveal"><span class="stat-num" data-count="100" data-suffix="%">0%</span><span class="stat-lbl">Partner focused</span></div>
       <div class="stat reveal"><span class="stat-num">24/7</span><span class="stat-lbl">Coverage across regions</span></div>
     </div>
   </div>
 
   <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><span class="hero-scroll-line"></span></div>
+
+  <!-- Curtain reveal: dim scrim scrubbed by GSAP as the About panel covers the hero -->
+  <div class="hero-dim" aria-hidden="true"></div>
 </section>
+
+
+
+
+  <!-- Proof strip -->
 
 <!-- ============== 1 · ABOUT PREVIEW ============== -->
 <section class="section section--textured" id="about-preview">
@@ -190,7 +179,7 @@
       </div>
       <div class="mq-item">
         <span class="mq-icon" aria-hidden="true">💻</span>
-        <span class="mq-title">Website Operations</span>
+        <span class="mq-title">Website Development</span>
         <span class="mq-desc">Modern, responsive builds</span>
       </div>
       <div class="mq-item">
@@ -199,7 +188,7 @@
         <span class="mq-desc">Six Sigma-driven workflows</span>
       </div>
       <div class="mq-item">
-        <span class="mq-icon mq-icon--dark" aria-hidden="true">🤝</span>
+        <span class="mq-icon" aria-hidden="true">🤝</span>
         <span class="mq-title">Partnership-Driven Solutions</span>
         <span class="mq-desc">An extension of your team</span>
       </div>
@@ -214,7 +203,7 @@
         <span class="mq-desc">Senior practitioners, embedded</span>
       </div>
       <div class="mq-item">
-        <span class="mq-icon mq-icon--dark" aria-hidden="true">✅</span>
+        <span class="mq-icon" aria-hidden="true">✅</span>
         <span class="mq-title">Quality-Focused Delivery</span>
         <span class="mq-desc">Consistent, measured outcomes</span>
       </div>
@@ -232,7 +221,7 @@
       </div>
       <div class="mq-item">
         <span class="mq-icon" aria-hidden="true">💻</span>
-        <span class="mq-title">Website Operations</span>
+        <span class="mq-title">Website Development</span>
         <span class="mq-desc">Modern, responsive builds</span>
       </div>
       <div class="mq-item">
@@ -241,7 +230,7 @@
         <span class="mq-desc">Six Sigma-driven workflows</span>
       </div>
       <div class="mq-item">
-        <span class="mq-icon mq-icon--dark" aria-hidden="true">🤝</span>
+        <span class="mq-icon" aria-hidden="true">🤝</span>
         <span class="mq-title">Partnership-Driven Solutions</span>
         <span class="mq-desc">An extension of your team</span>
       </div>
@@ -256,7 +245,7 @@
         <span class="mq-desc">Senior practitioners, embedded</span>
       </div>
       <div class="mq-item">
-        <span class="mq-icon mq-icon--dark" aria-hidden="true">✅</span>
+        <span class="mq-icon" aria-hidden="true">✅</span>
         <span class="mq-title">Quality-Focused Delivery</span>
         <span class="mq-desc">Consistent, measured outcomes</span>
       </div>
@@ -281,13 +270,13 @@
     <figure class="split-visual reveal" aria-hidden="true">
       <div class="split-photo">
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-          srcset="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80 600w,
-                  https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80 800w,
-                  https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1100&q=80 1100w"
+         src="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20How%20we%20Work.png?auto=format&fit=crop&w=800&q=80"
+          srcset="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20How%20we%20Work.png?auto=format&fit=crop&w=600&q=80 600w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20How%20we%20Work.png?auto=format&fit=crop&w=800&q=80 800w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20How%20we%20Work.png?auto=format&fit=crop&w=1100&q=80 1100w"
           sizes="(max-width: 991px) 90vw, 560px"
           width="800" height="1000"
-          alt=""
+          alt="Team Business Meeting"
           loading="lazy"
           decoding="async" />
       </div>
@@ -376,13 +365,13 @@
     <figure class="split-visual reveal" aria-hidden="true">
       <div class="split-photo">
         <img
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-          srcset="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80 600w,
-                  https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80 800w,
-                  https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=80 1100w"
+         src="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Where%20we%20add%20Value.png?auto=format&fit=crop&w=800&q=80"
+          srcset="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Where%20we%20add%20Value.png?auto=format&fit=crop&w=600&q=80 600w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Where%20we%20add%20Value.png?auto=format&fit=crop&w=800&q=80 800w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Where%20we%20add%20Value.png?auto=format&fit=crop&w=1100&q=80 1100w"
           sizes="(max-width: 991px) 90vw, 560px"
           width="800" height="1000"
-          alt=""
+          alt="Business Meeting with Manager"
           loading="lazy"
           decoding="async" />
       </div>
@@ -408,10 +397,10 @@
     <figure class="split-visual reveal" aria-hidden="true">
       <div class="split-photo">
         <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
-          srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80 600w,
-                  https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80 800w,
-                  https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1100&q=80 1100w"
+         src="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Flexible%20by%20Design.png?auto=format&fit=crop&w=800&q=80"
+          srcset="https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Flexible%20by%20Design.png?auto=format&fit=crop&w=600&q=80 600w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Flexible%20by%20Design.png?auto=format&fit=crop&w=800&q=80 800w,
+                  https://raw.githubusercontent.com/sales306/acxend-final-version.com/main/Images/Home%20-%20Flexible%20by%20Design.png?auto=format&fit=crop&w=1100&q=80 1100w"
           sizes="(max-width: 991px) 90vw, 560px"
           width="800" height="1000"
           alt=""
@@ -449,13 +438,13 @@
       </figure>
 
       <div class="faq-list reveal" data-stagger>
-        <details class="faq-item reveal" name="faq" open>
+         <details class="faq-item reveal" name="faq" open>
           <summary>
             <span>What services does aCXend actually provide?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
           <div class="faq-body">
-            <p>We operate as an extension of your team across four disciplines: <strong>Customer Support</strong>, <strong>Content Moderation</strong>, <strong>Website Operations</strong>, and <strong>Project Management</strong>. Each engagement is scoped to the outcomes you need, not a fixed menu of tasks.</p>
+            <p>We operate as an extension of your team across four disciplines: <strong>Customer Support</strong>, <strong>Content Moderation</strong>, <strong>Website Development</strong>, and <strong>Project Management</strong>. Each engagement is scoped to the outcomes you need, not a fixed menu of tasks.</p>
           </div>
         </details>
 
@@ -543,7 +532,7 @@
                (team collaboration, office motion, or an abstract operations
                visual) exported as both webm (VP9) and mp4 (H.264), ideally
                under ~6MB and 1920×1080, for smooth loading on all devices. -->
-          <source src="videos/cta-background.webm" type="video/webm" />
+          <source src="videos/reeded.mp4" type="video/webm" />
           <source src="videos/cta-background.mp4" type="video/mp4" />
         </video>
       </div>
@@ -578,8 +567,8 @@
           <img src="images/logo-white2.png" alt="aCXend" width="79" height="54"
                onerror="this.outerHTML='&lt;span class=&quot;brand-word brand-word--light&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
         </a>
-        <address class="footer-address">
-          <a href="https://maps.app.goo.gl/VBjbcP57tKT8KL2XA" target="_blank" rel="noopener noreferrer">Marigold Street, Cagayan de Oro City, Philippines</a>
+      <address class="footer-address">
+          <a href="https://maps.app.goo.gl/VBjbcP57tKT8KL2XA" target="_blank" rel="noopener noreferrer">Pioneer, Mandaluyong City, Philippines</a>
           <a href="mailto:sales@acxend.com">sales@acxend.com</a>
         </address>
       </div>
@@ -613,13 +602,13 @@
     <div class="footer-bar">
       <span class="footer-follow-label">Follow Us</span>
       <ul class="footer-social" aria-label="Social media">
-        <li><a href="#" aria-label="Facebook">
+      <li><a href="https://www.facebook.com/profile.php?id=61591341606124" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4z"/></svg>
         </a></li>
-        <li><a href="#" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.2L5.6 21h-3l7.1-8.1L2.3 3h6.3l4.3 5.7L17.8 3zm-1.1 16.2h1.7L7.7 4.7H5.9l10.8 14.5z"/></svg>
+       <li><a href="https://www.linkedin.com/company/acxendglobal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.7-1.3 2.3-2.7 4.7-2.7 5 0 5.9 3.3 5.9 7.5V24h-5v-7.6c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4v7.7h-5V8z"/></svg>
         </a></li>
-        <li><a href="#" aria-label="Instagram">
+       <li><a href="https://www.instagram.com/acxend/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8zm0-1.8a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.2a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 4.7c-2.4 0-2.7 0-3.6.1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3.9.1 1.2.1 3.6.1s2.7 0 3.6-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-.9-.1-1.2-.1-3.6-.1zM12 3c2.4 0 2.7 0 3.7.1 1 0 1.6.2 2.2.4.6.2 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.2.4 2.2.1 1 .1 1.3.1 3.6s0 2.6-.1 3.6c0 1-.2 1.6-.4 2.2-.2.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.2-1.2.4-2.2.4-1 .1-1.3.1-3.7.1s-2.7 0-3.7-.1c-1 0-1.6-.2-2.2-.4-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.2-.6-.4-1.2-.4-2.2C3 14.6 3 14.3 3 12s0-2.6.1-3.6c0-1 .2-1.6.4-2.2.2-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.2 1.2-.4 2.2-.4C9.3 3 9.6 3 12 3z"/></svg>
         </a></li>
       </ul>
@@ -629,10 +618,10 @@
     <div class="footer-legal">
       <span>&copy; 2026 aCXend. All rights reserved.</span>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms and Conditions</a></li>
-        <li><a href="#">End-User License Agreement</a></li>
-        <li><a href="#">Copyrights</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+        <li><a href="end-user-license-agreement.html">End-User License Agreement</a></li>
+        <li><a href="copyrights.html">Copyrights</a></li>
       </ul>
     </div>
 

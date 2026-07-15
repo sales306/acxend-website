@@ -89,9 +89,13 @@
    supporting line — separated by hairline dividers so the strip reads as
    one continuous premium ribbon rather than a row of floating cards. */
 .mq-item {
-  flex: none; width: 252px;
-  display: flex; flex-direction: column; justify-content: center; gap: 10px;
-  padding: 28px 30px;
+  /* Each cell hugs its own content and never wraps, so every ticker box is
+     a clean single-line title + single-line descriptor at a consistent
+     height. (Fixed-width cells used to force long labels to wrap onto a
+     second line, breaking the alignment.) */
+  flex: none; width: auto; white-space: nowrap;
+  display: flex; flex-direction: column; justify-content: center; gap: 8px;
+  padding: 26px 34px;
   border-right: 1px solid var(--line);
 }
 .mq-icon {
@@ -205,6 +209,9 @@
 .cap-card:hover .cap-link .arrow { transform: translateX(4px); }
 
 
+.cap-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+
 /* ---------- 10. CTA banner ---------- */
 .cta-banner {
   position: relative; overflow: clip;
@@ -266,7 +273,7 @@
 .footer a:hover { color: var(--white); }
 
 .footer-top { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: clamp(36px, 5vw, 72px); }
-.footer-logo img { height: 54px; width: auto; }
+.footer-logo img { height:50px; width: auto; }
 .footer-address { font-style: normal; margin-top: 20px; display: grid; gap: 10px; font-size: .92rem; }
 
 /* Three evenly-spaced, evenly-aligned columns: primary nav, Services,
@@ -277,8 +284,8 @@
 .footer-cols h4 { color: var(--sky); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
 
 .footer-col-primary a {
-  font-family: 'Manrope', sans-serif; font-weight: 700;
-  font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--white);
+  font-family: 'Manrope', sans-serif; font-weight: 400;
+ font-size: clamp(0.9rem, 1.1vw, 1rem); color: var(--white);
 }
 .footer-col-primary a:hover { color: var(--sky); }
 
@@ -338,7 +345,7 @@
    (see home.css) — this is not it. */
 .page-hero {
   position: relative;
-  min-height: clamp(560px, 86vh, 900px);
+  min-height: clamp(560px, 75vh, 900px);
   display: flex;
   align-items: center;
   color: var(--white);
@@ -360,65 +367,31 @@
   /* 20–35% dark overlay per spec — spans the full hero behind both columns */
   background: rgba(6, 20, 52, .3);
 }
+/* A touch deeper — used on the Services pages, where the video content
+   made the default 30% overlay not quite enough for comfortable text
+   contrast. Still lets the video read clearly through it. */
+.page-hero-overlay--deep {
+  background: rgba(6, 20, 52, .5);
+}
 
-/* Two-column grid: left content, right image. Same technique as the Home
-   hero's .hero-inner, so the two heroes feel like the same family. */
+/* Single-column, left-aligned hero content — used by every inner page now
+   that hero images have been removed sitewide. Capped at 680px so text
+   stays readable rather than stretching the full container width. */
 .page-hero-inner {
   position: relative; z-index: 3; width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: clamp(32px, 5vw, 72px);
   padding-block: clamp(64px, 8vw, 110px);
 }
-.page-hero-content { text-align: left; }
+.page-hero-content { text-align: left; max-width: 680px; }
 .page-hero-content .crumbs,
 .page-hero-content .eyebrow { justify-content: flex-start; }
 .page-hero h1 { color: var(--white); margin-bottom: 18px; font-size: clamp(2.5rem, 4.6vw, 4rem); }
 .page-hero-desc { color: rgba(226,236,252,.88); font-size: clamp(1rem, 1.25vw, 1.15rem); max-width: 50ch; }
-
-/* Centered, single-column variant — for hero pages with no supporting
-   image (the four dedicated service pages). Content is wider than the
-   two-column layout's text column (was ~47% of the container; this runs
-   up to 760px) so the hero doesn't read as empty without the photo. */
-.page-hero--centered .page-hero-inner { grid-template-columns: 1fr; }
-.page-hero--centered .page-hero-content {
-  text-align: center;
-  max-width: 760px;
-  margin-inline: auto;
-}
-.page-hero--centered .page-hero-content .crumbs,
-.page-hero--centered .page-hero-content .eyebrow { justify-content: center; }
-.page-hero--centered .page-hero-desc { margin-inline: auto; }
-.page-hero--centered .page-hero-cta { justify-content: center; }
 .page-hero-cta { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 14px; margin-top: 32px; }
-
-/* Right column — premium image, same rounded/bordered/shadow treatment as
-   the Home hero's .hero-photo and the split sections' .split-photo, plus
-   a slow continuous float so it feels alive without needing hover. */
-.page-hero-visual { position: relative; }
-.page-hero-photo {
-  position: relative;
-  aspect-ratio: 4 / 3.3;
-  border-radius: calc(var(--radius) + 4px);
-  overflow: clip;
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 30px 70px -25px rgba(0,0,0,.55);
-  animation: focus-card-float 6.5s ease-in-out infinite;
-}
-.page-hero-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  display: block;
-  transition: transform 1.4s var(--ease-lux);
-}
-.page-hero-photo:hover img { transform: scale(1.045); }
-@keyframes focus-card-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 
 .crumbs {
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 26px;
-  font-family: 'Manrope', sans-serif; font-size: .8rem; font-weight: 600;
+  font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 600;
   color: rgba(226,236,252,.55);
 }
 .crumbs a { color: rgba(226,236,252,.75); transition: color var(--dur) var(--ease); }
@@ -436,24 +409,10 @@
 }
 .page-hero-jump a:hover { background: rgba(255,255,255,.08); border-color: var(--sky); color: var(--white); transform: translateY(-2px); }
 
-@media (max-width: 1600px) and (min-width: 992px) {
-  /* Laptop range: same reasoning as the Home hero — give a little more
-     vertical breathing room on shorter laptop viewports (1366×768,
-     1440×900) before the tablet breakpoint's own adjustment kicks in. */
-  .page-hero-photo { aspect-ratio: 4 / 3.6; }
+.page-hero-content .eyebrow, .page-hero h1, .page-hero-desc, .page-hero .crumbs {
+    text-shadow: 0 2px 22px rgba(6, 20, 52, .45), 0 1px 4px rgba(6, 20, 52, .55);
 }
-@media (max-width: 991px) {
-  /* Tablet: keep two columns, just tighten spacing and the photo's aspect
-     ratio so it doesn't dominate a narrower viewport. */
-  .page-hero-inner { gap: clamp(24px, 4vw, 40px); }
-  .page-hero-photo { aspect-ratio: 4 / 3.6; }
-}
-@media (max-width: 768px) {
-  /* Mobile: stack — content first, then image (source order already
-     matches, so no reordering needed). */
-  .page-hero-inner { grid-template-columns: 1fr; }
-  .page-hero-photo { aspect-ratio: 16 / 12; animation: none; }
-}
+
 @media (max-width: 640px) {
   .page-hero { min-height: clamp(480px, 92vh, 760px); }
 }
@@ -461,8 +420,6 @@
   /* main.js removes the whole .page-hero-media (video) node for reduced
      motion; this is a defensive fallback in case JS hasn't run yet. */
   .page-hero-video { display: none; }
-  .page-hero-photo { animation: none; }
-  .page-hero-photo:hover img { transform: none; }
 }
 
 
@@ -807,7 +764,21 @@
   .split-photo { aspect-ratio: 4 / 3.4; }
   .section-head { grid-template-columns: 1fr; align-items: start; gap: 16px; }
   .section-head p { justify-self: start; }
-  .footer-top { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 20px; }
+  /* Two columns instead of a full vertical stack — this is the main fix
+     for the footer being taller than the viewport: since .footer-curtain
+     is position:fixed to the bottom of the screen (so it can rise into
+     view as the page content scrolls past it), any part of it taller
+     than the viewport itself is literally unreachable — a fixed element
+     doesn't get its own scrollbar. Halving the stack height here keeps
+     the whole footer within reach on every mobile/tablet viewport. */
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+  .footer-cols ul { gap: 8px; }
+  .footer { padding-block: 28px 12px; }
+  .footer-address { margin-top: 8px; gap: 5px; }
+  .footer-bar { padding-block: 10px; gap: 8px 14px; }
+  .footer-legal { padding-top: 10px; gap: 8px 14px; }
+  .footer-hours { flex-basis: 100%; margin-left: 0; font-size: .76rem; line-height: 1.35; }
 
   /* Inner pages */
   .contact-grid { grid-template-columns: 1fr; }
@@ -818,7 +789,12 @@
 @media (max-width: 640px) {
   .cap-grid { grid-template-columns: 1fr; }
   .split-photo { aspect-ratio: 16 / 11; }
-  .footer-cols { grid-template-columns: 1fr; gap: 28px; }
+  .footer-cols { gap: 16px 10px; }
+  .footer-col-primary a { font-size: .85rem; }
+  .footer-cols .footer-col-services a,
+  .footer-cols .footer-col-engagement a { font-size: .78rem; }
+  .footer-legal { flex-direction: column; align-items: flex-start; }
+  .footer-legal ul { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; width: 100%; }
 
   /* Inner pages */
   .form-row { grid-template-columns: 1fr; }

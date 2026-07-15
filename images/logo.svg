@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 112" role="img" aria-label="aCXend">
+  <defs>
+    <linearGradient id="acxGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0A3FC4"/>
+      <stop offset="55%" stop-color="#1B7BE8"/>
+      <stop offset="100%" stop-color="#4DA3FF"/>
+    </linearGradient>
+  </defs>
+  <!-- rising arrow accent -->
+  <path d="M66 92 C150 96 176 46 300 20" fill="none" stroke="url(#acxGrad)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M300 20 L276 24 L288 44 Z" fill="url(#acxGrad)"/>
+  <!-- wordmark -->
+  <text x="4" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="84" font-weight="800" letter-spacing="-3">
+    <tspan fill="#0B1524">a</tspan><tspan fill="url(#acxGrad)">CX</tspan><tspan fill="#0B1524">end</tspan>
+  </text>
+</svg>

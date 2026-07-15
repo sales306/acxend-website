@@ -190,13 +190,10 @@
     const ring = document.querySelector('.cursor-ring');
     const heroGlow1 = document.querySelector('.hero-glow--1');
     const heroGlow2 = document.querySelector('.hero-glow--2');
-    const heroPanel = document.querySelector('.hero-panel');
-    const opsFloat = document.querySelector('.hero-focus-card');
 
     let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
     let dotX = mouseX, dotY = mouseY, ringX = mouseX, ringY = mouseY;
     let glowX = 0, glowY = 0, glowTX = 0, glowTY = 0;
-    let tiltX = 0, tiltY = 0, tiltTX = 0, tiltTY = 0;
     let ready = false;
 
     window.addEventListener('pointermove', (e) => {
@@ -206,17 +203,6 @@
       // Normalized -1..1 from viewport center, used for ambient parallax
       glowTX = (mouseX / window.innerWidth - 0.5) * 2;
       glowTY = (mouseY / window.innerHeight - 0.5) * 2;
-
-      // Hero panel 3D tilt, only reacts while the cursor is near/over it
-      if (heroPanel) {
-        const r = heroPanel.getBoundingClientRect();
-        if (mouseX > r.left - 80 && mouseX < r.right + 80 && mouseY > r.top - 80 && mouseY < r.bottom + 80) {
-          const px = (mouseX - (r.left + r.width / 2)) / (r.width / 2);
-          const py = (mouseY - (r.top + r.height / 2)) / (r.height / 2);
-          tiltTX = Math.max(-1, Math.min(1, py)) * -6;
-          tiltTY = Math.max(-1, Math.min(1, px)) * 8;
-        }
-      }
     }, { passive: true });
 
     document.addEventListener('pointerdown', () => ring && ring.classList.add('is-down'));
@@ -256,12 +242,6 @@
       glowY = lerp(glowY, glowTY, 0.05);
       if (heroGlow1) heroGlow1.style.transform = `translate3d(${glowX * 26}px, ${glowY * 22}px, 0)`;
       if (heroGlow2) heroGlow2.style.transform = `translate3d(${glowX * -32}px, ${glowY * -18}px, 0)`;
-
-      // Hero panel tilt + floating metric card drift
-      tiltX = lerp(tiltX, tiltTX, 0.09);
-      tiltY = lerp(tiltY, tiltTY, 0.09);
-      if (heroPanel) heroPanel.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-      if (opsFloat) opsFloat.style.transform = `translate3d(${tiltY * 1.4}px, ${tiltX * -1.4}px, 0)`;
 
       requestAnimationFrame(raf);
     }

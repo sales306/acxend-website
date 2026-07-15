@@ -11,6 +11,8 @@
   background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 70%, #0C2558 100%);
   color: var(--white);
   overflow: clip;
+     
+ 
 }
 .hero-bg { position: absolute; inset: 0; pointer-events: none; }
 .hero-grid-lines {
@@ -28,76 +30,21 @@
 
 .hero-inner {
   position: relative;
-  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  align-items: center; gap: clamp(40px, 6vw, 88px);
-  padding-block: clamp(88px, 11vw, 150px) clamp(72px, 9vw, 120px);
+   padding-block: clamp(40px, 5vw, 150px) clamp(72px, 9vw, 120px); 
+/* padding-block: clamp(48px, 5vw, 60px) clamp(40px, 4vw, 60px); */
 }
-.hero-title { color: var(--white); margin-block: 4px 22px; }
+.hero-copy { max-width: 720px; }
+.hero-title { color: var(--white); margin-block: 4px 22px; 
+   text-shadow: 0 2px 22px rgba(6, 20, 52, .5), 0 1px 4px rgba(6, 20, 52, .55);}
 .hero-title .line { display: block; }
 .hero-title em { font-style: normal; color: var(--white); }
 .hero-accent {
   background: linear-gradient(120deg, var(--sky), var(--cta-2));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.hero-desc { color: rgba(226,236,252,.82); font-size: clamp(1.02rem, 1.3vw, 1.2rem); max-width: 54ch; }
+.hero-desc { color: rgba(226,236,252,.82); font-size: clamp(1.02rem, 1.3vw, 1.2rem); max-width: 54ch; 
+text-shadow: 0 2px 22px rgba(6, 20, 52, .45), 0 1px 4px rgba(6, 20, 52, .55);}
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-
-/* Signature — professional imagery + service focus card
-   (replaces the former live-metrics/progress-bar panel: this is a young,
-   growing company, so the hero leans on real imagery and plain service
-   labels rather than fabricated stats.) */
-.hero-panel { position: relative; }
-.hero-photo {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
-  overflow: clip;
-  box-shadow: 0 30px 60px -25px rgba(0,0,0,.55);
-  background: var(--navy-deep); /* shows while the image decodes */
-}
-.hero-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center 30%;
-  display: block;
-}
-.hero-photo::after {
-  /* Soft brand-tinted wash so the photo sits naturally in the navy hero */
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(200deg, rgba(10,31,76,.35), rgba(10,31,76,0) 45%),
-              linear-gradient(0deg, rgba(6,20,52,.55), rgba(6,20,52,0) 38%);
-  pointer-events: none;
-}
-
-.hero-focus-card {
-  position: absolute; left: -18px; bottom: -28px; z-index: 2;
-  width: min(240px, 62%);
-  padding: 20px 22px;
-  display: grid; gap: 14px;
-  background: rgba(10,31,76,.55);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 30px 60px -25px rgba(0,0,0,.55);
-  animation: focus-card-float 5.5s ease-in-out infinite;
-}
-.hero-focus-head {
-  font-family: 'Manrope', sans-serif; font-size: .72rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--sky);
-}
-.focus-list { display: grid; gap: 11px; }
-.focus-item {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Manrope', sans-serif; font-size: .84rem; font-weight: 600;
-  color: rgba(226,236,252,.92); line-height: 1.25;
-}
-.focus-ic {
-  flex: none; display: grid; place-items: center;
-  width: 28px; height: 28px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--cta-1), var(--cta-2));
-  color: var(--white);
-}
-.focus-ic svg { width: 14px; height: 14px; }
 
 /* Proof strip */
 .hero-stats { position: relative; border-top: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); }
@@ -133,10 +80,6 @@
 .hero-title.in .line-inner { transform: translateY(0); }
 
 
-/* ---------- Mouse-tilt hero panel ---------- */
-.hero-panel { transform-style: preserve-3d; will-change: transform; transition: transform .15s var(--ease); }
-.hero-panel .hero-photo, .hero-panel .hero-focus-card { transition: transform .15s var(--ease); }
-
 /* ---------- About Us preview — centered layout ---------- */
 #about-preview .container.narrow {
   text-align: center;
@@ -165,39 +108,30 @@
    ratio here (without touching it above 1600px, where taller monitors have
    the vertical room) keeps the full image comfortably in view. */
 @media (max-width: 1600px) and (min-width: 992px) {
-  /* Laptop range: the earlier photo-only fix wasn't enough. The hero's H1
-     renders as 3 fixed lines (.line spans, for the mask-reveal animation —
-     not natural wrapping), so the recent sitewide H1 size increase made
-     the TEXT column the dominant height driver here, not the image. A
-     photo-only fix couldn't solve that. This tempers the H1 specifically
-     in the laptop range, tightens the hero's vertical padding and the
-     stats strip, and shortens the photo further — combined, this keeps
-     the whole hero (not just the image) within a typical laptop viewport
-     (1366×768, 1440×900) without cropping anything below the fold. Sizes
-     above 1600px are untouched. */
+  /* Laptop range: the hero's H1 renders as 3 fixed lines (.line spans,
+     for the mask-reveal animation — not natural wrapping), so at laptop
+     widths (1366×768, 1440×900) the full 3-line headline plus padding
+     can run close to the visible viewport height. This tempers the H1
+     size and tightens vertical padding/stats spacing so the whole hero
+     stays comfortably in view. Sizes above 1600px are untouched. */
   .hero-title { font-size: clamp(2.6rem, 5vw, 4.2rem); }
   .hero-inner {
     padding-block: clamp(64px, 8vw, 100px) clamp(56px, 7vw, 80px);
   }
-  .hero-photo { aspect-ratio: 4 / 3.6; }
   .hero-stats-grid { padding-block: 20px; }
 }
 
 @media (max-width: 991px) {
-  .hero-inner { grid-template-columns: 1fr; padding-block: 72px 64px; }
-  .hero-panel { max-width: 480px; }
-  .hero-photo { aspect-ratio: 4 / 3.6; }
+  .hero-inner { padding-block: 72px 64px; }
   .hero-scroll { display: none; }
 }
 
 @media (max-width: 640px) {
   .hero-stats-grid { grid-template-columns: 1fr; gap: 18px; }
-  .hero-focus-card { left: 0; bottom: -18px; width: min(210px, 58%); padding: 16px 18px; }
-  .hero-photo { aspect-ratio: 16 / 11; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-title .line-inner { transform: none !important; transition: none !important; }
-  .hero-focus-card { animation: none; }
-  .hero-panel, .hero-panel .hero-photo, .hero-panel .hero-focus-card { transition: none !important; }
 }
+
+
