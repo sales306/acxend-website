@@ -1,13 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/services", "destination": "/services.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/engagement-models", "destination": "/engagement-models.html" },
-
-    { "source": "/content-moderation", "destination": "/content-moderation.html" },
-    { "source": "/project-management", "destination": "/project-management.html" },
-    { "source": "/website-development", "destination": "/website-development.html" },
-    { "source": "/customer-support", "destination": "/customer-support.html" }
-  ]
+  "cleanUrls": true
 }
