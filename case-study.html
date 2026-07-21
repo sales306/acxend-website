@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Studies — Real Work. Real Impact. | aCXend</title>
+<meta name="description" content="Explore how aCXend supports teams with customer operations, content moderation, and scalable execution — structured solutions and measurable outcomes across real engagements." />
+<meta property="og:title" content="Case Studies — Real Work. Real Impact. | aCXend" />
+<meta property="og:description" content="How we approach complex challenges, implement structured solutions, and deliver measurable outcomes across support, moderation, and digital operations." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="case-studies.html" />
+<link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+<link rel="apple-touch-icon" href="images/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- ==========================================================================
+     Stylesheet load order: tokens → base → components → animations → effects
+     are shared across every page. This page needs no page-specific stylesheet
+     — the cinematic page-hero, split sections, and CTA banner are all already
+     defined in components.css for reuse.
+     ========================================================================== -->
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/effects.css" />
+<link rel="stylesheet" href="css/home.css" />
+<link rel="stylesheet" href="css/case-studies.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============== NAVIGATION ============== -->
+<header class="nav-wrap" data-nav>
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="aCXend — Home">
+      <img src="images/logo.png" alt="aCXend" class="brand-logo"
+           onerror="this.onerror=null;this.src='images/logo.svg'" />
+    </a>
+
+    <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+      <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+      <div class="nav-item"><a class="nav-link" href="about.html">About Us</a></div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="services.html">Services
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Services submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="customer-support.html">Customer Support</a>
+          <a role="menuitem" href="content-moderation.html">Content Moderation</a>
+          <a role="menuitem" href="website-development.html">Website Development</a>
+          <a role="menuitem" href="project-management.html">Project Management</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="engagement-models.html">Engagement Models
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Engagement Models submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="engagement-models.html#staff-augmentation">Staff Augmentation</a>
+          <a role="menuitem" href="engagement-models.html#managed-services">Managed Services</a>
+          <a role="menuitem" href="engagement-models.html#hybrid-teams">Hybrid Teams</a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link active" aria-current="page" href="case-study.html">Case Study</a></div>
+      <div class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-nav">Start a Conversation</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<div id="smooth-content">
+<main id="main">
+
+<!-- ============== PAGE HERO ============== -->
+<header class="page-hero page-hero--left" aria-label="About aCXend introduction">
+  <!-- Cinematic background video: autoplay, muted, loop, playsinline.
+       Fades in once decoded (see backgroundVideoEngine() in js/main.js) so
+       there's no jarring pop-in; poster shows immediately while it loads.
+       Footage: videos/bg1.mp4. -->
+  <div class="page-hero-media" aria-hidden="true">
+    <video
+      class="page-hero-video"
+      autoplay muted loop playsinline
+      preload="auto"
+      poster="images/about-hero-poster.jpg">
+      <source src="videos/case-study-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero-inner">
+    <div class="page-hero-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span aria-current="page">Case Study</span>
+      </nav>
+      <h1 class="reveal split-text">Partnerships built to go beyond</h1>
+      <p class="page-hero-desc reveal split-text">We stay hands-on—solving and improving, not just maintaining.</p>
+      <div class="page-hero-cta reveal">
+        <a href="/contact" class="btn btn-primary btn-lg">Start a Conversation
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== 2 · CASE STUDIES GRID ============== -->
+<section class="section" id="case-studies-grid">
+  <div class="container">
+    <div class="section-head section-head--center reveal" data-stagger>
+      <div>
+        <span class="eyebrow reveal split-text">Selected work</span>
+        <h2 class="reveal split-text">Structured solutions, <span class="accent">measurable outcomes.</span></h2>
+      </div>
+      <p>A look at how we structure, run, and improve operations for the teams we partner with.</p>
+    </div>
+
+    <div class="case-grid reveal" data-stagger>
+      <article class="case-card reveal">
+        <a href="case-study-real-time.html">
+          <div class="case-image">
+            <img src="images/Case%20Study%20-%20Near%20Real-Time%20Incident%20Response%20for%20a%20European%20Energy%20Trading%20and%20Battery%20Storage%20Provider.png"
+                      alt="Near Real-Time Incident Response for a European Energy Trading and Battery Storage Provider"
+                      width="900" height="563" loading="lazy" decoding="async" />
+          </div>
+          <div class="case-content">
+              <span class="case-tag">Energy Trading</span>
+              <h3>Enabling Near Real-Time Incident Response at Scale</h3>
+              <p>Automated incident detection and alerting reduced delays by 95%, enabling near real-time response and preventing up to $20K in losses per asset.</p>
+              <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+      </article>
+
+     <article class="case-card reveal">
+        <a href="case-study-customer-operations-transformation.html">
+          <div class="case-image">
+            <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Customer%20Transformation.png"
+                    alt="Customer Transformation Through End-to-End Process Optimization and Experience Redesign"
+                    width="900" height="563" loading="lazy" decoding="async" />
+        </div>
+          <div class="case-content">
+              <span class="case-tag">Telecommunications &amp; Travel Tech</span>
+              <h3>Transforming Customer Operations Through Intelligent Automation</h3>
+              <p>Automated ticket triage and routing reduced manual workload by 70%, improved response times by 35%, and enabled scalable global customer support.</p>
+              <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+     </article>
+         
+      <article class="case-card reveal">
+        <a href="case-study-annotation-accuracy.html">
+          <div class="case-image">
+            <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Annotation%20Accuracy.png"
+               alt="Annotation Accuracy Case Study"
+               width="900" height="563" loading="lazy" decoding="async" />
+          </div>
+          <div class="case-content">
+              <span class="case-tag">Digital Entertainment</span>
+              <h3>Achieving 100% Annotation Accuracy at Scale</h3>
+              <p>Multi-layer trust &amp; safety operations delivering 100% validated accuracy, 99.8% compliance, and 3x processing capacity—without compromising quality.</p>
+              <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+      </article>
+         
+      <article class="case-card reveal">
+        <a href="case-study-customer-experience-transformation.html">
+          <div class="case-image">
+           <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Customer%20Experience%20Transformation.png"
+                    alt="Customer Experience Transformation Through End-to-End Journey Optimization and Operational Excellence"
+                    width="900" height="563" loading="lazy" decoding="async" />
+          </div>
+          <div class="case-content">
+                 <span class="case-tag">Cryptocurrency</span>
+                 <h3>Unifying Multi-Platform Support Operations</h3>
+                 <p>Centralized workflows, intelligent routing, and real-time visibility reduced platform switching and improved response speed across complex, multi-client environments.</p>
+                 <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+     </article>
+         
+      <article class="case-card reveal">
+        <a href="case-study-scaling-customer-support.html">
+          <div class="case-image">
+            <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Scaling%20Customer%20Support.png"
+                    alt="Scaling Customer Support Operations for High-Growth Businesses"
+                    width="900" height="563" loading="lazy" decoding="async" />
+          </div>
+          <div class="case-content">
+              <span class="case-tag">Digital Banking</span>
+              <h3>Scaling Customer Support with AI-Driven Deflection</h3>
+              <p>AI-powered self-service reduced ticket volume by 30%, improved response times, and enabled scalable support during rapid growth.</p>
+              <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+     </article>
+
+           <article class="case-card reveal">
+        <a href="case-study-player-safety.html">
+          <div class="case-image">
+            <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Enhancing%20Player%20Safety.png"
+                    alt="Enhancing Player Safety Through Advanced Moderation and Risk Detection Systems"
+                    width="900" height="563" loading="lazy" decoding="async" />
+          </div>
+          <div class="case-content">
+              <span class="case-tag">Digital Entertainment</span>
+              <h3>Strengthening Player Safety Through Risk Management</h3>
+              <p>Proactive trust &amp; safety program ensured 100% escalation of high-risk cases, improving player protection, compliance, and platform trust.</p>
+              <span class="case-link">View Case Study</span>
+          </div>
+        </a>
+     </article>
+
+  </div>
+</section>
+
+<!-- ============== 3 · CTA (reused component) ============== -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal" data-stagger>
+      <div class="cta-video-wrap" aria-hidden="true">
+        <video class="cta-video" autoplay muted loop playsinline preload="auto">
+          <source src="videos/reeded.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="cta-video-overlay" aria-hidden="true"></div>
+      <div class="cta-glow" aria-hidden="true"></div>
+
+      <div class="cta-content">
+        <span class="eyebrow eyebrow--sky reveal split-text">Partner with us</span>
+        <h2 class="reveal split-text">Let's build your next case study.</h2>
+        <p>Whether you're exploring options or already know what you need, we're here to understand your goals and see how we can support you. No pressure—just a conversation to see if there's a good fit.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-light btn-lg">Start a Conversation
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- /#smooth-content -->
+
+<!-- ============== FOOTER (curtain reveal) ============== -->
+<footer class="footer footer-curtain" id="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html" aria-label="aCXend — Home">
+          <img src="images/logo-white2.png" alt="aCXend" width="79" height="54"
+               onerror="this.outerHTML='&lt;span class=&quot;brand-word brand-word--light&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
+        </a>
+        <address class="footer-address">
+          <a href="https://maps.app.goo.gl/VBjbcP57tKT8KL2XA" target="_blank" rel="noopener noreferrer">Marigold Street, Cagayan de Oro City, Philippines</a>
+          <a href="mailto:sales@acxend.com">sales@acxend.com</a>
+        </address>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-cols">
+          <ul class="footer-col-primary">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="engagement-models.html">Engagement Models</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+          <ul class="footer-col-services">
+            <li><h4>Services</h4></li>
+            <li><a href="customer-support.html">Customer Support</a></li>
+            <li><a href="content-moderation.html">Content Moderation</a></li>
+            <li><a href="website-development.html">Website Development</a></li>
+            <li><a href="project-management.html">Project Management</a></li>
+          </ul>
+          <ul class="footer-col-engagement">
+            <li><h4>Engagement Models</h4></li>
+            <li><a href="engagement-models.html#staff-augmentation">Staff Augmentation</a></li>
+            <li><a href="engagement-models.html#managed-services">Managed Services</a></li>
+            <li><a href="engagement-models.html#hybrid-teams">Hybrid Teams</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-follow-label">Follow Us</span>
+      <ul class="footer-social" aria-label="Social media">
+        <li><a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.2L5.6 21h-3l7.1-8.1L2.3 3h6.3l4.3 5.7L17.8 3zm-1.1 16.2h1.7L7.7 4.7H5.9l10.8 14.5z"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8zm0-1.8a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.2a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 4.7c-2.4 0-2.7 0-3.6.1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3.9.1 1.2.1 3.6.1s2.7 0 3.6-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-.9-.1-1.2-.1-3.6-.1zM12 3c2.4 0 2.7 0 3.7.1 1 0 1.6.2 2.2.4.6.2 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.2.4 2.2.1 1 .1 1.3.1 3.6s0 2.6-.1 3.6c0 1-.2 1.6-.4 2.2-.2.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.2-1.2.4-2.2.4-1 .1-1.3.1-3.7.1s-2.7 0-3.7-.1c-1 0-1.6-.2-2.2-.4-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.2-.6-.4-1.2-.4-2.2C3 14.6 3 14.3 3 12s0-2.6.1-3.6c0-1 .2-1.6.4-2.2.2-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.2 1.2-.4 2.2-.4C9.3 3 9.6 3 12 3z"/></svg>
+        </a></li>
+      </ul>
+      <p class="footer-hours">24/7 Operations &middot; 365 Days a Year &middot; Always Ready to Assist</p>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 aCXend. All rights reserved.</span>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+        <li><a href="end-user-license-agreement.html">End-User License Agreement</a></li>
+        <li><a href="copyrights.html">Copyrights</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<div id="smooth-spacer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
