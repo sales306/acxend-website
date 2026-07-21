@@ -1,0 +1,203 @@
+/* ==========================================================================
+   aCXend — Case Studies (page-scoped)
+   Loaded ONLY on case-studies.html and sample-case.html, after effects.css.
+   Adds NEW classes only (.case-grid, .case-card, .section--textured, …).
+   Nothing here overrides an existing selector — it reuses the shared design
+   tokens (color, radius, shadow, motion) so the cards feel native to the site.
+   ========================================================================== */
+
+/* Soft textured section backing for the intro band, using the existing asset. */
+.section--textured {
+  position: relative;
+  background-color: var(--cloud);
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.55), rgba(242,245,250,.9)),
+    url("../images/section-texture-light.png");
+  background-size: auto, 520px;
+  background-repeat: no-repeat, repeat;
+}
+
+/* ---- Grid: 3 / 2 / 1 columns ---- */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+@media (max-width: 992px) { .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
+
+/* ---- Card ---- */
+.case-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: clip;
+  transition: transform var(--dur) var(--ease-lux),
+              box-shadow var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+.case-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+/* gradient hairline that draws across the top on hover — matches .cap-card */
+.case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 2;
+  background: linear-gradient(90deg, var(--cta-1), var(--cta-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .45s var(--ease-lux);
+}
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(47,123,224,.4);
+}
+.case-card:hover::before { transform: scaleX(1); }
+.case-card:focus-within {
+  border-color: rgba(47,123,224,.55);
+  box-shadow: var(--shadow-lg);
+}
+.case-card a:focus-visible { outline: none; }
+
+/* ---- Image (zoom on hover) ---- */
+.case-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: clip;
+  background: var(--cloud);
+}
+.case-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s var(--ease-lux);
+}
+.case-card:hover .case-image img { transform: scale(1.06); }
+
+/* ---- Content ---- */
+.case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 24px 26px;
+  flex: 1;
+}
+.case-tag {
+  align-self: flex-start;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--royal);
+  background: linear-gradient(135deg, rgba(10,91,255,.08), rgba(77,163,255,.14));
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+.case-content h3 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 1.16rem;
+  line-height: 1.25;
+  color: var(--navy);
+  margin: 0;
+}
+.case-content p {
+  color: var(--slate);
+  font-size: .94rem;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: .86rem;
+  color: var(--royal);
+}
+.case-link::after {
+  content: "";
+  width: 14px; height: 14px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 8h11M9 3.5 13.5 8 9 12.5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 8h11M9 3.5 13.5 8 9 12.5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform var(--dur) var(--ease);
+}
+.case-card:hover .case-link::after { transform: translateX(4px); }
+
+/* ==========================================================================
+   Individual case study page — results list + meta row
+   Reuses .section / .split / .container.narrow from the shared system.
+   ========================================================================== */
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  padding: 22px 0 0;
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.case-meta div { display: flex; flex-direction: column; gap: 2px; }
+.case-meta dt {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: .66rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.case-meta dd {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: .96rem;
+  margin: 0;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+@media (max-width: 700px) { .results-grid { grid-template-columns: 1fr; } }
+.result-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 30px 26px;
+  transition: transform var(--dur) var(--ease-lux), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.result-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(47,123,224,.4); }
+.result-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cta-1), var(--cta-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.result-card p {
+  margin: 12px 0 0;
+  color: var(--slate);
+  font-size: .95rem;
+  line-height: 1.55;
+}
