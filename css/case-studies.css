@@ -123,7 +123,7 @@
   font-size: .94rem;
   line-height: 1.6;
   margin: 0;
-  flex: 1;
+  min-height: 6.4em;   /* ≈ 4 lines at this font-size/line-height — locks every card's text block to the same height */
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
