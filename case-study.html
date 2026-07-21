@@ -93,36 +93,51 @@
 <main id="main">
 
 <!-- ============== PAGE HERO ============== -->
-<header class="page-hero page-hero--left" aria-label="About aCXend introduction">
-  <!-- Cinematic background video: autoplay, muted, loop, playsinline.
-       Fades in once decoded (see backgroundVideoEngine() in js/main.js) so
-       there's no jarring pop-in; poster shows immediately while it loads.
-       Footage: videos/bg1.mp4. -->
+<header class="page-hero page-hero--left" aria-label="Case Study introduction">
+  <!-- Cinematic background video -->
   <div class="page-hero-media" aria-hidden="true">
     <video
       class="page-hero-video"
-      autoplay muted loop playsinline
+      autoplay
+      muted
+      loop
+      playsinline
       preload="auto"
-      poster="images/about-hero-poster.jpg">
+      poster="images/case-study-hero-poster.jpg">
       <source src="videos/case-study-hero.mp4" type="video/mp4" />
     </video>
   </div>
+
   <div class="page-hero-overlay" aria-hidden="true"></div>
 
   <div class="container page-hero-inner">
     <div class="page-hero-content">
+      
+      <!-- Breadcrumb -->
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/">Home</a>
-        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <span aria-current="page">Case Study</span>
       </nav>
-      <h1 class="reveal split-text">Partnerships built to go beyond</h1>
-      <p class="page-hero-desc reveal split-text">We stay hands-on—solving and improving, not just maintaining.</p>
+
+      <!-- Hero Content -->
+      <h1 class="reveal split-text">Real-World Impact. Proven Outcomes.</h1>
+      <p class="page-hero-desc reveal split-text">
+        Explore how we solve complex operational challenges through hands-on execution, automation, and scalable systems.
+      </p>
+
+      <!-- CTA -->
       <div class="page-hero-cta reveal">
-        <a href="/contact" class="btn btn-primary btn-lg">Start a Conversation
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Start a Conversation
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
       </div>
+
     </div>
   </div>
 </header>
@@ -174,7 +189,7 @@
       <article class="case-card reveal">
         <a href="case-study-annotation-accuracy.html">
           <div class="case-image">
-            <img src="https://raw.githubusercontent.com/sales306/acxend-case-study/main/images/Case%20Study%20-%20Annotation%20Accuracy.png"
+               <img src="https://raw.githubusercontent.com/sales306/acxend-website/main/images/Case%20Study%20-%20Annotation%20Accuracy.png"
                alt="Annotation Accuracy Case Study"
                width="900" height="563" loading="lazy" decoding="async" />
           </div>
@@ -234,6 +249,8 @@
           </div>
         </a>
      </article>
+
+    </div>
 
   </div>
 </section>
