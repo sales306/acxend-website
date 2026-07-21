@@ -556,25 +556,12 @@
 </section>
 
 <!-- ============== 4 · CTA ==============
-     Structure and buttons stay fixed. H2 + two body paragraphs may be
-     lightly themed to this case study's topic. -->
 <section class="section section--tight">
   <div class="container">
     <div class="cta-banner reveal" data-stagger>
-
-      <!-- Cinematic background video: autoplay, muted, loop, playsinline.
-           Fades in once decoded (see ctaBackgroundVideo() in js/main.js) so
-           there's no jarring pop-in; a dark gradient overlay keeps text
-           readable while the footage stays visible underneath. Falls back
-           to the existing navy gradient if video can't load or is
-           unsupported. Same reusable component as the Home/About CTA. -->
       <div class="cta-video-wrap" aria-hidden="true">
-        <video
-          class="cta-video"
-          autoplay muted loop playsinline
-          preload="auto"
-          poster="images/cta-poster.jpg">
-          <source src="reeded.mp4" type="video/mp4" />
+        <video class="cta-video" autoplay muted loop playsinline preload="auto">
+          <source src="videos/reeded.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="cta-video-overlay" aria-hidden="true"></div>
