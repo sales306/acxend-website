@@ -345,7 +345,7 @@
    (see home.css) — this is not it. */
 .page-hero {
   position: relative;
-  min-height: clamp(560px, 75vh, 900px);
+  min-height: clamp(560px, 100vh, 1400px);
   display: flex;
   align-items: center;
   color: var(--white);
