@@ -47,14 +47,19 @@
     margin-bottom: 1.1rem;
   }
   .legal-content ul {
+    list-style: disc;
     margin: 0 0 1.5rem 0;
-    padding-left: 1.25rem;
+    padding-left: 1.5rem;
   }
   .legal-content ul li {
+    display: list-item;
     margin-bottom: 0.6rem;
   }
   .legal-content ul li:last-child {
     margin-bottom: 0;
+  }
+  .legal-content ul li::marker {
+    color: #1a2b4c;
   }
   .legal-content a {
     text-decoration: underline;
