@@ -122,14 +122,18 @@
    }
 
    /* ---- Image hero with overlaid breadcrumb ---- */
-  .cs-hero-image{
+     .cs-hero-image{
     position:relative;
     overflow:hidden;
+    background:#05091b;                       /* fills the space beside the smaller image */
   }
-  .cs-hero-img{
+     .cs-hero-img{
     position:relative; z-index:0;
-    width:100%; height:auto;                 /* image sets the hero height — nothing is cropped */
     display:block;
+    width:100%;
+    max-width:1000px;                        /* ← SIZE KNOB: lower = smaller hero, higher = bigger */
+    height:auto;                             /* full image, nothing cropped */
+    margin-inline:auto;                      /* centered */
   }
   /* soft dark gradient at the top so the breadcrumb stays legible */
   .cs-hero-overlay{
