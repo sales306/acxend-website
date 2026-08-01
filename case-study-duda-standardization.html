@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     CASE STUDY  ·  aCXend
+     AI Prompt-Driven Website Standardization on DUDA
+     Built from CASE STUDY - TEMPLATE. Structure, CSS, nav, footer, CTA,
+     and scripts are unchanged from the template; only the content area
+     has been populated.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<title>AI Prompt-Driven Website Standardization on DUDA — aCXend Case Study</title>
+<meta name="description" content="How aCXend turned AI prompts into structured templates to eliminate inconsistency and accelerate website delivery on DUDA — cutting up to 7 hours of manual setup per site and speeding initialization by 65%." />
+<meta property="og:title" content="AI Prompt-Driven Website Standardization on DUDA — aCXend Case Study" />
+<meta property="og:description" content="7 hours saved per website, 65% faster initialization, and standardized structure across every DUDA build through prompt-driven templates." />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://www.acxend.com/case-studies/ai-website-standardization-duda" />
+<link rel="icon" type="image/svg+xml" href="images/logo.svg" />
+<link rel="apple-touch-icon" href="images/favicons.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- ==========================================================================
+     Stylesheet load order: tokens → base → components → animations → effects
+     are shared across every page. This page needs no page-specific stylesheet
+     for nav/hero/split/CTA — those are already defined in components.css.
+     A small scoped <style> block below covers the case-study-only pieces
+     (stat strip, result cards, notification-list) that don't exist yet in
+     components.css, namespaced under .cs- so nothing else on the site is
+     affected.
+     ========================================================================== -->
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/effects.css" />
+
+<style>
+  /* ---- Case-study-page-only components (namespaced .cs-) ---- */
+  .cs-tag{
+    display:inline-flex;align-items:center;
+    padding:6px 14px;border-radius:999px;
+    background:var(--color-sky-100, #e5f0ff);
+    color:var(--color-primary, #1a4fd6);
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .cs-stat-strip{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+    background:var(--color-border,#e7e9ee);
+    border:1px solid var(--color-border,#e7e9ee);
+    border-radius:16px;overflow:hidden;
+  }
+  .cs-stat{
+    background:#fff;padding:32px 20px;text-align:center;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .cs-stat-num{
+    font-family:'Manrope',sans-serif;font-weight:800;
+    font-size:clamp(24px,3vw,34px);color:var(--color-navy,#0a1f44);
+    line-height:1.1;
+  }
+  .cs-stat-label{
+    font-family:'Inter',sans-serif;font-size:13px;line-height:1.4;
+    color:var(--color-gray-600,#5b6472);
+  }
+  @media (max-width:900px){
+    .cs-stat-strip{grid-template-columns:repeat(2,1fr);}
+    .cs-stat:nth-child(5){grid-column:1 / -1;}
+  }
+
+  .cs-callout{
+    border-left:3px solid var(--color-primary,#1a4fd6);
+    background:var(--color-sky-50,#f3f7ff);
+    border-radius:0 12px 12px 0;
+    padding:22px 26px;margin-top:24px;
+    font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;
+    color:var(--color-navy,#0a1f44);
+  }
+  .cs-callout strong{color:var(--color-primary,#1a4fd6);}
+
+  .cs-check-list{list-style:none;margin:24px 0 0;padding:0;
+    display:grid;gap:14px;}
+  .cs-check-list li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-family:'Inter',sans-serif;font-size:15px;line-height:1.55;
+    color:var(--color-gray-700,#333d4d);
+  }
+  .cs-check-list svg{flex:none;margin-top:2px;color:var(--color-primary,#1a4fd6);}
+
+  .cs-result-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+    margin-top:8px;
+  }
+  .cs-result-card{
+    background:#fff;border:1px solid var(--color-border,#e7e9ee);
+    border-radius:14px;padding:20px 22px;
+    font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.5;
+    color:var(--color-gray-700,#333d4d);
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .cs-result-card svg{flex:none;margin-top:2px;color:var(--color-primary,#1a4fd6);}
+  @media (max-width:700px){.cs-result-grid{grid-template-columns:1fr;}}
+
+  .cs-cite{
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    margin-top:36px;padding-top:24px;border-top:1px solid var(--color-border,#e7e9ee);
+  }
+  .cs-cite span{
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--color-gray-500,#7a8393);
+  }
+       /* tighter vertical rhythm for this page */
+  .section{ padding-block:clamp(48px,5vw,84px); }
+  .section--tight{ padding-block:clamp(34px,4vw,60px); 
+   }
+
+   /* ---- Image hero with overlaid breadcrumb ---- */
+  .cs-hero-image{
+    position:relative;
+    min-height:clamp(440px,66vh,660px);      /* hero size — raise/lower to taste */
+    overflow:hidden;
+  }
+  .cs-hero-img{
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    display:block;
+  }
+  /* soft dark gradient at the top so the breadcrumb stays legible */
+  .cs-hero-overlay{
+    position:absolute; inset:0 0 auto 0; height:180px; z-index:1;
+    background:linear-gradient(180deg, rgba(6,20,52,.55), transparent);
+    pointer-events:none;
+  }
+     .cs-hero-crumbs{
+    position:relative; z-index:2;
+    padding-top:88px;
+  }
+  .cs-hero-crumbs .crumbs{ color:rgba(255,255,255,.75); margin-bottom:0; }
+  .cs-hero-crumbs .crumbs a{ color:rgba(255,255,255,.9); }
+  .cs-hero-crumbs .crumbs a:hover{ color:#fff; }
+  .cs-hero-crumbs .crumbs [aria-current]{ color:#fff; }
+     
+  /* ---- Perfectly-centered section body ---- */
+  .cs-centered{
+    max-width:1040px;
+    margin-inline:auto;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .cs-centered > *{ width:100%; }
+  .cs-centered .eyebrow{ justify-content:center; }
+  .cs-centered p{ max-width:82ch; margin-inline:auto; }
+  .cs-centered .cs-check-list{ width:auto; text-align:left; }
+  .cs-centered .cs-callout{ text-align:left; }
+
+  /* ---- Approach vertical timeline ---- */
+  .cs-timeline{
+    list-style:none;
+    margin:36px 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:56px;
+    width:100%;
+    max-width:760px;
+    margin-inline:auto;
+    text-align:left;
+  }
+  .cs-timeline-item{
+    position:relative;
+    display:flex;
+    align-items:center;
+  }
+  .cs-timeline-item:not(:last-child)::before{
+    content:"";
+    position:absolute;
+    left:26px; top:26px;
+    width:2px;
+    height:calc(100% + 56px);
+    background:var(--color-primary,#1a4fd6);
+    transform:translateX(-50%);
+  }
+  .cs-timeline-badge{
+    position:relative; z-index:1;
+    flex:none;
+    width:52px; height:52px;
+    border-radius:50%;
+    background:var(--color-primary,#1a4fd6);
+    color:#fff;
+    display:grid; place-items:center;
+    box-shadow:0 0 0 7px rgba(26,79,214,.07), 0 0 22px 3px rgba(26,79,214,.30);
+  }
+  .cs-timeline-badge svg{ width:24px; height:24px; }
+  .cs-timeline-connector{
+    flex:none;
+    position:relative;
+    width:64px; height:2px;
+    background:var(--color-primary,#1a4fd6);
+  }
+  .cs-timeline-connector::after{
+    content:"";
+    position:absolute; right:-3px; top:50%;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--color-primary,#1a4fd6);
+    transform:translateY(-50%);
+  }
+  .cs-timeline-text{
+    padding-left:22px;
+    font-family:'Inter',sans-serif;
+    font-size:clamp(16px,1.5vw,20px);
+    line-height:1.4;
+    color:var(--color-gray-700,#333d4d);
+  }
+  @media (max-width:600px){
+    .cs-timeline-connector{ width:28px; }
+    .cs-timeline-text{ padding-left:14px; font-size:16px; }
+    .cs-timeline{ gap:44px; }
+    .cs-timeline-item:not(:last-child)::before{ height:calc(100% + 44px); }
+  }
+
+  /* ---- Key results — connected circle nodes ---- */
+  .cs-nodes{
+    display:flex; align-items:center; justify-content:center;
+    flex-wrap:wrap; gap:0; row-gap:28px;
+  }
+  .cs-node{ flex:0 0 auto; }
+  .cs-node-circle{
+    position:relative;
+    width:clamp(104px,9.5vw,132px);
+    aspect-ratio:1;
+    border-radius:50%;
+    background:#fff;
+    border:2px solid var(--color-primary,#1a4fd6);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    padding:13px;
+    box-shadow:0 12px 34px -14px rgba(26,79,214,.4);
+  }
+  .cs-node-circle::before{
+    content:""; position:absolute; inset:-9px;
+    border-radius:50%;
+    border:1px dashed rgba(26,79,214,.28);
+  }
+  .cs-node-icon{ color:var(--color-navy,#0a1f44); margin-bottom:4px; }
+  .cs-node-icon svg{ width:26px; height:26px; }
+  .cs-node-num{
+    font-family:'Manrope',sans-serif; font-weight:800;
+    font-size:clamp(15px,1.5vw,20px); line-height:1.05;
+    color:var(--color-navy,#0a1f44);
+  }
+  .cs-node-line{
+    width:24px; height:3px; border-radius:2px;
+    background:var(--color-primary,#1a4fd6);
+    margin:6px 0;
+  }
+  .cs-node-label{
+    font-family:'Inter',sans-serif;
+    font-size:clamp(9.5px,.8vw,11px); line-height:1.3;
+    color:var(--color-gray-600,#5b6472);
+  }
+  .cs-node-link{
+    position:relative; flex:1 1 24px;
+    min-width:20px; max-width:60px;
+    height:2px; background:var(--color-primary,#1a4fd6);
+  }
+  .cs-node-link::before,
+  .cs-node-link::after{
+    content:""; position:absolute; top:50%;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--color-primary,#1a4fd6);
+    transform:translateY(-50%);
+  }
+  .cs-node-link::before{ left:-4px; }
+  .cs-node-link::after{ right:-4px; }
+  @media (max-width:920px){
+    .cs-nodes{ flex-direction:column; }
+    .cs-node-link{
+      flex:none; width:2px; height:30px; max-width:none;
+    }
+    .cs-node-link::before{ left:50%; top:-4px; transform:translateX(-50%); }
+    .cs-node-link::after{ left:50%; right:auto; bottom:-4px; top:auto; transform:translateX(-50%); }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============== NAVIGATION (do not modify) ============== -->
+<header class="nav-wrap" data-nav>
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="aCXend — Home">
+      <img src="images/logo.png" alt="aCXend" class="brand-logo" width="76" height="52"
+           onerror="this.outerHTML='&lt;span class=&quot;brand-word&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
+    </a>
+
+    <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+      <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+      <div class="nav-item"><a class="nav-link" href="about.html">About Us</a></div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="services.html">Services
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Services submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="customer-support.html">Customer Support</a>
+          <a role="menuitem" href="content-moderation.html">Content Moderation</a>
+          <a role="menuitem" href="website-development.html">Website Operations</a>
+          <a role="menuitem" href="project-management.html">Project Management</a>
+        </div>
+      </div>
+
+      <div class="nav-item has-dropdown">
+        <a class="nav-link" href="engagement-models.html">Engagement Models
+          <button class="caret" type="button" aria-expanded="false" aria-label="Toggle Engagement Models submenu">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </a>
+        <div class="dropdown" role="menu">
+          <a role="menuitem" href="engagement-models.html#staff-augmentation">Staff Augmentation</a>
+          <a role="menuitem" href="engagement-models.html#managed-services">Managed Services</a>
+          <a role="menuitem" href="engagement-models.html#hybrid-teams">Hybrid Teams</a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="nav-link active" aria-current="page" href="case-studies.html">Case Studies</a></div>
+      <div class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-nav">Start a Conversation</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<div id="smooth-content">
+<main id="main">
+
+<!-- ============== PAGE HERO (image only) ==============
+     SWAP: hero image src (URL-encode spaces), alt text, breadcrumb label -->
+<section class="cs-hero-image" aria-label="Case study hero">
+  <img class="cs-hero-img"
+    src="images/ai-website-standardization-duda.jpg"
+    alt="AI Prompt-Driven Website Standardization on DUDA" />
+  <div class="cs-hero-overlay" aria-hidden="true"></div>
+  <div class="cs-hero-crumbs">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="case-studies.html">Case Studies</a>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span aria-current="page">Website Standardization</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TITLE + KEY RESULTS NODES ==============
+     SWAP: H1, subhead, and each node's icon SVG, number, and label.
+     Keep exactly 5 nodes separated by <span class="cs-node-link"></span>.
+     Node labels ≤ 6 words. Icons: 24x24 viewBox, stroke-width 1.5, no fill. -->
+<section class="section section--tight section--cloud">
+  <div class="container">
+       
+    <div class="cs-centered" style="margin-bottom:48px;">
+  <h1 class="reveal split-text" style="font-size:clamp(1.9rem,3.8vw,3.1rem);margin-bottom:20px;">AI Prompt-Driven Website Standardization on DUDA</h1>
+  <p class="reveal">aCXend turned AI prompts into structured templates — moving a fast-growing digital agency from inconsistent, build-from-zero websites to a standardized, scalable production model on DUDA.</p>
+ </div>
+
+    <div class="cs-nodes reveal" data-stagger>
+      <div class="cs-node">
+        <div class="cs-node-circle">
+          <span class="cs-node-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="cs-node-num">7 Hours</span>
+          <span class="cs-node-line"></span>
+          <span class="cs-node-label">Reduced setup per website</span>
+        </div>
+      </div>
+
+      <span class="cs-node-link"></span>
+
+      <div class="cs-node">
+        <div class="cs-node-circle">
+          <span class="cs-node-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 14l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="14" r="1.4" fill="currentColor"/></svg></span>
+          <span class="cs-node-num">65%</span>
+          <span class="cs-node-line"></span>
+          <span class="cs-node-label">Faster initialization phase</span>
+        </div>
+      </div>
+
+      <span class="cs-node-link"></span>
+
+      <div class="cs-node">
+        <div class="cs-node-circle">
+          <span class="cs-node-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="5" rx="1.2" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="12" width="16" height="3" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="4" y="18" width="16" height="2" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cs-node-num">Standardized</span>
+          <span class="cs-node-line"></span>
+          <span class="cs-node-label">Structure across all builds</span>
+        </div>
+      </div>
+
+      <span class="cs-node-link"></span>
+
+      <div class="cs-node">
+        <div class="cs-node-circle">
+          <span class="cs-node-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M17 8h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 16h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 16h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cs-node-num">Flexible</span>
+          <span class="cs-node-line"></span>
+          <span class="cs-node-label">Customization on AI foundations</span>
+        </div>
+      </div>
+
+      <span class="cs-node-link"></span>
+
+      <div class="cs-node">
+        <div class="cs-node-circle">
+          <span class="cs-node-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V6M4 20h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 16l3.5-4 3 2.5L20 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="cs-node-num">Scalable</span>
+          <span class="cs-node-line"></span>
+          <span class="cs-node-label">Prompt-driven production model</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 1 · THE PROBLEM ==============
+     SWAP: H2 (end with 2–3 word accent span + period), 3 paragraphs,
+     and the callout (one bolded financial/impact figure). -->
+<section class="section section--textured">
+  <div class="container">
+    <div class="split-body reveal cs-centered" data-stagger>
+      <span class="eyebrow reveal split-text">The Problem</span>
+      <h2 class="reveal split-text">Every website started differently — <span class="accent">and it showed.</span></h2>
+      <p>A fast-growing digital agency building websites on DUDA faced a critical scaling issue: no two websites were structured the same way. Each new client came with different references, layouts, and expectations.</p>
+      <p>While that flexibility allowed for tailored designs, it also meant every project started from zero. Designers interpreted requirements individually, resulting in inconsistent page structures, varying user flows, and uneven quality across deliverables.</p>
+      <p>Core pages such as home, services, and contact were built differently each time — not because they needed to be, but because there was no enforced structure guiding the build. This lack of standardization increased setup time, created inefficiencies, and made collaboration more complex across the team.</p>
+      <div class="cs-callout">
+        Before any real design work could begin, teams spent <strong>hours structuring pages, organizing sections, and aligning layouts</strong> — repetitive work that slowed delivery and limited scalability. The challenge was clear: maintain flexibility for unique client needs while enforcing a consistent, high-quality structure across all websites.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 2 · THE APPROACH ==============
+     SWAP: H2 (accent span), 2 paragraphs, lead-in sentence ending in a
+     colon, 3 check-list items, closing paragraph. -->
+<section class="section section--cloud">
+  <div class="container">
+    <div class="split-body reveal cs-centered" data-stagger>
+      <span class="eyebrow reveal split-text">The Approach</span>
+      <h2 class="reveal split-text">Turning AI prompts <span class="accent">into structured templates.</span></h2>
+      <p>aCXend redefined how DUDA AI was used — not just as a content generator, but as a template engine powered by structured prompts. Instead of relying on designers to manually interpret each client brief, aCXend engineered a standardized AI prompt framework to act as the foundation for every website build.</p>
+      <p>Each AI prompt follows a predefined structure — dictating page hierarchy, section sequencing, content placement, and layout logic. Whether the input is a simple business description or a complex client requirement, the output always aligns with a standardized website framework. In effect, the AI prompt itself became the template.</p>
+      <p>This approach ensured that every generated website includes:</p>
+      <ul class="cs-check-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>A consistent page structure (Home, Services, About, Contact) with predefined section flows — Hero → Value Proposition → Services → Social Proof → CTA</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Logical content placement aligned with user experience best practices</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Built-in responsiveness and layout consistency within DUDA</span>
+        </li>
+      </ul>
+      <p style="margin-top:20px;">Once the AI-generated structure is applied within DUDA as the base framework, designers move into a second phase — customization. Visual identity, branding, imagery, and client-specific elements are layered on top of the structured foundation, allowing creativity to thrive without compromising consistency. To reinforce the system, aCXend implemented build standards, prompt usage guidelines, and QA checkpoints, so every team member follows the same structured approach.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 3 · THE OUTCOME ==============
+     SWAP: H2 (accent span), intro paragraph, 8 result cards (short
+     outcome statements), closing paragraph. -->
+<section class="section section--dark">
+  <div class="section-grid-bg" aria-hidden="true"></div>
+  <span class="section-node" aria-hidden="true"><span class="node-ring"></span><span class="node-dot"></span></span>
+  <div class="container">
+    <div class="reveal" data-stagger>
+        <div class="split-body cs-centered">
+        <span class="eyebrow reveal split-text">The Outcome</span>
+        <h2 class="reveal split-text">Structure first, creativity second — <span class="accent">at scale.</span></h2>
+        <p>By transforming AI prompts into standardized templates, the agency eliminated inconsistency at its source — moving from reactive, manual builds to a proactive, structured system where every website starts with the same strong foundation, regardless of client input.</p>
+      </div>
+    </div>
+
+    <div class="cs-result-grid reveal" data-stagger>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Average of 7 hours saved in manual setup per website</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>65% faster website initialization phase</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Consistent structure across all client websites</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Reduced variability in layout, flow, and user experience</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Improved collaboration through a shared build framework</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Greater efficiency in handling multiple concurrent projects</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>More time for designers to focus on high-value customization</span>
+      </div>
+      <div class="cs-result-card">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Scalable delivery model without increasing headcount</span>
+      </div>
+    </div>
+
+    <p class="reveal" style="max-width:1040px;margin:32px auto 0;text-align:center;font-family:'Inter',sans-serif;color:var(--color-gray-300,#c3c9d4);line-height:1.6;">Through prompt engineering, DUDA AI optimization, and operational standardization, aCXend created a repeatable yet flexible website production model — balancing efficiency with creativity, and structure with customization — that scales delivery without adding headcount.</p>
+  </div>
+</section>
+
+<!-- ============== 4 · CTA ==============
+     Structure and buttons stay fixed. H2 + two body paragraphs may be
+     lightly themed to this case study's topic. -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta-banner reveal" data-stagger>
+
+      <!-- Cinematic background video: autoplay, muted, loop, playsinline.
+           Fades in once decoded (see ctaBackgroundVideo() in js/main.js) so
+           there's no jarring pop-in; a dark gradient overlay keeps text
+           readable while the footage stays visible underneath. Falls back
+           to the existing navy gradient if video can't load or is
+           unsupported. Same reusable component as the Home/About CTA. -->
+      <div class="cta-video-wrap" aria-hidden="true">
+        <video
+          class="cta-video"
+          autoplay muted loop playsinline
+          preload="auto"
+          poster="images/cta-poster.jpg">
+          <source src="reeded.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="cta-video-overlay" aria-hidden="true"></div>
+      <div class="cta-glow" aria-hidden="true"></div>
+
+      <div class="cta-content">
+        <span class="eyebrow eyebrow--sky reveal split-text">Partner with us</span>
+        <h2 class="reveal split-text">Rebuilding the same pages from scratch every time?</h2>
+        <p>If your website delivery starts from zero on every project, there's a faster, more consistent way to work — one that keeps room for creativity while enforcing structure at scale.</p>
+        <p>Tell us about your build process and the outcomes you're working toward, and we'll show you how prompt-driven standardization can accelerate your delivery.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-light btn-lg">Start a Conversation
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="case-studies.html" class="btn btn-outline-light btn-lg" style="color:#ffffff;border:1.5px solid rgba(255,255,255,0.65);background:transparent;">View More Case Studies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- /#smooth-content -->
+
+<!-- ============== FOOTER (curtain reveal — do not modify) ============== -->
+<footer class="footer footer-curtain" id="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html" aria-label="aCXend — Home">
+          <img src="images/logo-white2.png" alt="aCXend" width="79" height="54"
+               onerror="this.outerHTML='&lt;span class=&quot;brand-word brand-word--light&quot;&gt;a&lt;b&gt;CX&lt;/b&gt;end&lt;/span&gt;'" />
+        </a>
+      <address class="footer-address">
+          <a href="https://maps.app.goo.gl/VBjbcP57tKT8KL2XA" target="_blank" rel="noopener noreferrer">Pioneer, Mandaluyong City, Philippines</a>
+          <a href="mailto:sales@acxend.com">sales@acxend.com</a>
+        </address>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-cols">
+          <ul class="footer-col-primary">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="engagement-models.html">Engagement Models</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+          <ul class="footer-col-services">
+            <li><h4>Services</h4></li>
+            <li><a href="customer-support.html">Customer Support</a></li>
+            <li><a href="content-moderation.html">Content Moderation</a></li>
+            <li><a href="website-development.html">Website Operations</a></li>
+            <li><a href="project-management.html">Project Management</a></li>
+          </ul>
+          <ul class="footer-col-engagement">
+            <li><h4>Engagement Models</h4></li>
+            <li><a href="engagement-models.html#staff-augmentation">Staff Augmentation</a></li>
+            <li><a href="engagement-models.html#managed-services">Managed Services</a></li>
+            <li><a href="engagement-models.html#hybrid-teams">Hybrid Teams</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-follow-label">Follow Us</span>
+      <ul class="footer-social" aria-label="Social media">
+      <li><a href="https://www.facebook.com/profile.php?id=61591341606124" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4z"/></svg>
+        </a></li>
+       <li><a href="https://www.linkedin.com/company/acxendglobal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.7-1.3 2.3-2.7 4.7-2.7 5 0 5.9 3.3 5.9 7.5V24h-5v-7.6c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4v7.7h-5V8z"/></svg>
+        </a></li>
+       <li><a href="https://www.instagram.com/acxend/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8zm0-1.8a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.2a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM12 4.7c-2.4 0-2.7 0-3.6.1-.9 0-1.4.2-1.7.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.3-.3.8-.3 1.7-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c0 .9.2 1.4.3 1.7.2.4.4.7.7 1 .3.3.6.5 1 .7.3.1.8.3 1.7.3.9.1 1.2.1 3.6.1s2.7 0 3.6-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.3.3-.8.3-1.7.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c0-.9-.2-1.4-.3-1.7-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.3-.1-.8-.3-1.7-.3-.9-.1-1.2-.1-3.6-.1zM12 3c2.4 0 2.7 0 3.7.1 1 0 1.6.2 2.2.4.6.2 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.2.4 2.2.1 1 .1 1.3.1 3.6s0 2.6-.1 3.6c0 1-.2 1.6-.4 2.2-.2.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.2-1.2.4-2.2.4-1 .1-1.3.1-3.7.1s-2.7 0-3.7-.1c-1 0-1.6-.2-2.2-.4-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.2-.6-.4-1.2-.4-2.2C3 14.6 3 14.3 3 12s0-2.6.1-3.6c0-1 .2-1.6.4-2.2.2-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.2 1.2-.4 2.2-.4C9.3 3 9.6 3 12 3z"/></svg>
+        </a></li>
+      </ul>
+      <p class="footer-hours">24/7 Operations &middot; 365 Days a Year &middot; Always Ready to Assist</p>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 aCXend. All rights reserved.</span>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+        <li><a href="end-user-license-agreement.html">End-User License Agreement</a></li>
+        <li><a href="copyrights.html">Copyrights</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<div id="smooth-spacer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
