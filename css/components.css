@@ -184,10 +184,10 @@
 .cap-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(47,123,224,.4); }
 .cap-card:hover::before { transform: scaleX(1); }
 
-/* Home page only: 3 cards on top row, cards 4 & 5 centered below */
-.cap-grid--home { grid-template-columns: repeat(6, 1fr); }
-.cap-grid--home .cap-card { grid-column: span 2; }
-.cap-grid--home .cap-card:nth-child(4) { grid-column: 2 / span 2; }
+/* Home page only: all 4 service cards sit in a single row */
+.cap-grid--home { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cap-grid--home .cap-card,
+.cap-grid--home .cap-card:nth-child(4) { grid-column: auto; }
 
 .cap-num {
   position: absolute; top: 20px; right: 22px;
